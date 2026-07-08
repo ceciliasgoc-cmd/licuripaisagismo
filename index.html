@@ -154,6 +154,7 @@
       gap: 6px;
       flex-shrink: 0;
       margin-left: auto;
+      /* empurra para a direita */;
     }
     .lang-btn {
       background: transparent;
@@ -316,7 +317,7 @@
       box-shadow: 0 8px 28px var(--verde-sombra);
     }
 
-    /* ---------- SEÇÕES (padding vertical uniforme) ---------- */
+    /* ---------- SEÇÕES ---------- */
     section {
       padding: 80px 0;
       border-bottom: 1px solid var(--borda);
@@ -340,7 +341,6 @@
       color: var(--verde-medio);
       font-weight: 600;
       margin-bottom: 8px;
-      /* espaço fixo entre eyebrow e título */
     }
     .section-head h2 {
       font-family: var(--fonte-titulo);
@@ -357,7 +357,7 @@
       margin-top: 4px;
     }
 
-    /* ---------- SERVIÇOS (cards com sombra, gap uniforme) ---------- */
+    /* ---------- SERVIÇOS ---------- */
     .servicos-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -472,7 +472,7 @@
       }
     }
 
-    /* ---------- VIVEIRO (com imagem de fundo opaca) ---------- */
+    /* ---------- VIVEIRO ---------- */
     .viveiro-destaque {
       background: var(--verde-escuro);
       color: white;
@@ -535,6 +535,8 @@
       flex-shrink: 0;
       z-index: 2;
       position: relative;
+      align-self: flex-start;
+      /* alinhado à esquerda */;
     }
 
     /* ---------- CONTATO ---------- */
@@ -772,6 +774,10 @@
       .viveiro-texto p {
         text-align: center;
       }
+      .viveiro-destaque .btn {
+        align-self: center;
+        /* centraliza no mobile */;
+      }
       .viveiro-imagem {
         position: relative;
         width: 100%;
@@ -898,7 +904,7 @@
       <div class="section-head reveal">
         <div>
           <div class="eyebrow" data-i18n="projetos_eyebrow">Projetos</div>
-          <h2 data-i18n="projetos_titulo">Alguns dos meus trabalhos</h2>
+          <h2 data-i18n="projetos_titulo">Alguns trabalhos realizados</h2>
         </div>
       </div>
     </div>
@@ -917,8 +923,8 @@
         <div class="viveiro-texto">
           <div class="eyebrow" data-i18n="viveiro_eyebrow">Viveiro</div>
           <h2 data-i18n="viveiro_titulo">Mais de 200 espécies<br />à sua disposição</h2>
-          <p data-i18n="viveiro_desc">Plantas nativas e ornamentais cultivadas com cuidado. Venha conhecer nosso viveiro ou faça seu pedido online.</p>
-          <a href="https://www.instagram.com/viveirolicuri/" target="_blank" rel="noopener" class="btn btn-destaque" data-i18n="viveiro_btn">Conheça o Viveiro Licuri</a>
+          <p data-i18n="viveiro_desc">Plantas nativas e ornamentais cultivadas com cuidado. Venha conhecer nosso viveiro.</p>
+          <a href="https://www.instagram.com/viveirolicuri/" class="btn btn-destaque" data-i18n="viveiro_btn">Conheça o Viveiro Licuri</a>
         </div>
         <div class="viveiro-imagem" id="viveiroImagem" style="background-image: url('https://via.placeholder.com/600x400/4a7c59/ffffff?text=Sua+Imagem');">
           <!-- Substitua pela sua imagem -->
@@ -952,7 +958,7 @@
           </div>
 
           <div class="redes-sociais">
-            <a href="https://www.instagram.com/julianafavaratopaisagismo/" target="_blank" aria-label="Instagram">
+            <a href="https://www.instagram.com/julianafavaratopaisagismo/" aria-label="Instagram">
               <i class="fab fa-instagram"></i>
             </a>
             <a href="https://wa.me/5573999876050" target="_blank" aria-label="WhatsApp">
@@ -980,7 +986,7 @@
             <img src="https://via.placeholder.com/60x60/4a7c59/ffffff?text=Logo" alt="Logo" style="height:40px;width:auto;filter:brightness(1.2);" />
             Juliana Favarato
           </a>
-          <p style="opacity:0.7;margin-top:8px;font-size:0.9rem;font-weight:500;" data-i18n="footer_sub">Jardins que contam histórias</p>
+          <p style="opacity:0.7;margin-top:8px;font-size:0.9rem;font-weight:500;" data-i18n="footer_sub">Paisagismo e natureza</p>
         </div>
         <div class="footer-links">
           <div>
@@ -996,7 +1002,7 @@
           </div>
           <div>
             <h5 data-i18n="footer_redes">Redes</h5>
-            <a href="https://www.instagram.com/julianafavaratopaisagismo/" target="_blank">Instagram</a>
+            <a href="https://www.instagram.com/julianafavaratopaisagismo/">Instagram</a>
           </div>
         </div>
       </div>
@@ -1094,15 +1100,15 @@
         servico4_tit: 'Consultoria e manejo',
         servico4_desc: 'Acompanhamento técnico e manutenção para seu jardim florescer.',
         projetos_eyebrow: 'Projetos',
-        projetos_titulo: 'Alguns dos meus trabalhos',
+        projetos_titulo: 'Alguns trabalhos realizados',
         viveiro_eyebrow: 'Viveiro',
         viveiro_titulo: 'Mais de 200 espécies<br />à sua disposição',
-        viveiro_desc: 'Plantas nativas e ornamentais cultivadas com cuidado. Venha conhecer nosso viveiro ou faça seu pedido online.',
+        viveiro_desc: 'Plantas nativas e ornamentais cultivadas com cuidado. Venha conhecer nosso viveiro.',
         viveiro_btn: 'Conheça o Viveiro Licuri',
         contato_eyebrow: 'Contato',
         contato_titulo: 'Vamos plantar juntos?',
         contato_desc: 'Entre em contato por um dos canais abaixo.',
-        footer_sub: 'Jardins que contam histórias',
+        footer_sub: 'Paisagismo e natureza',
         footer_nav: 'Navegação',
         footer_contato: 'Contato',
         footer_redes: 'Redes',
@@ -1131,15 +1137,15 @@
         servico4_tit: 'Consulting and management',
         servico4_desc: 'Technical follow-up and maintenance for your garden to flourish.',
         projetos_eyebrow: 'Projects',
-        projetos_titulo: 'Some of my work',
+        projetos_titulo: 'Some work done',
         viveiro_eyebrow: 'Nursery',
         viveiro_titulo: 'Over 200 species<br />at your disposal',
-        viveiro_desc: 'Native and ornamental plants grown with care. Come visit our nursery or order online.',
+        viveiro_desc: 'Native and ornamental plants grown with care. Come visit our nursery.',
         viveiro_btn: 'Visit Viveiro Licuri',
         contato_eyebrow: 'Contact',
         contato_titulo: "Let's plant together?",
         contato_desc: 'Get in touch through one of the channels below.',
-        footer_sub: 'Gardens that tell stories',
+        footer_sub: 'Landscaping and nature',
         footer_nav: 'Navigation',
         footer_contato: 'Contact',
         footer_redes: 'Social',
@@ -1168,15 +1174,15 @@
         servico4_tit: 'Consultoría y manejo',
         servico4_desc: 'Seguimiento técnico y mantenimiento para que tu jardín florezca.',
         projetos_eyebrow: 'Proyectos',
-        projetos_titulo: 'Algunos de mis trabajos',
+        projetos_titulo: 'Algunos trabajos realizados',
         viveiro_eyebrow: 'Vivero',
         viveiro_titulo: 'Más de 200 especies<br />a tu disposición',
-        viveiro_desc: 'Plantas nativas y ornamentales cultivadas con cuidado. Visita nuestro vivero o haz tu pedido online.',
+        viveiro_desc: 'Plantas nativas y ornamentales cultivadas con cuidado. Ven a conocer nuestro vivero.',
         viveiro_btn: 'Visitar Vivero Licuri',
         contato_eyebrow: 'Contacto',
         contato_titulo: '¿Plantamos juntos?',
         contato_desc: 'Ponte en contacto a través de uno de los canales.',
-        footer_sub: 'Jardines que cuentan historias',
+        footer_sub: 'Paisajismo y naturaleza',
         footer_nav: 'Navegación',
         footer_contato: 'Contacto',
         footer_redes: 'Redes',

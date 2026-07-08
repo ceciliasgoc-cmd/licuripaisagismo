@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
   <style>
-    /* ---------- RESET ---------- */
+    /* ---------- RESET E VARIÁVEIS ---------- */
     * {
       margin: 0;
       padding: 0;
@@ -30,7 +30,7 @@
       --texto: #1e2b22;
       --fonte-corpo: 'Inter', sans-serif;
       --fonte-titulo: 'Playfair Display', serif;
-      --sombra: 0 8px 30px rgba(0,0,0,0.08);
+      --sombra: 0 8px 30px rgba(0, 0, 0, 0.08);
     }
 
     html {
@@ -119,9 +119,54 @@
       display: flex;
       align-items: center;
       gap: 40px;
-      /* mais espaço entre os itens */;
       flex-wrap: wrap;
+      flex: 1;
     }
+    /* Empurra os idiomas para a direita */
+    .lang-group {
+      display: flex;
+      gap: 8px;
+      margin-left: auto;
+      /* vai para a direita */;
+      padding-right: 4px;
+    }
+    .lang-btn {
+      background: transparent;
+      border: 1px solid var(--borda);
+      border-radius: 30px;
+      padding: 4px 14px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      line-height: 1.4;
+      color: var(--verde-escuro);
+      transition: background 0.3s, border-color 0.3s, color 0.3s;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      min-width: 52px;
+      text-align: center;
+    }
+    .lang-btn .flag {
+      font-size: 1.1rem;
+      line-height: 1;
+    }
+    .lang-btn .code {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+    .lang-btn:hover {
+      background: var(--verde-claro);
+      border-color: var(--verde-medio);
+    }
+    .lang-btn.active {
+      background: var(--verde-medio);
+      border-color: var(--verde-medio);
+      color: white;
+    }
+
     nav a {
       font-size: 1rem;
       font-weight: 600;
@@ -144,33 +189,6 @@
     }
     nav a:hover::after {
       width: 100%;
-    }
-
-    /* Botões de idioma com bandeira apenas */
-    .lang-group {
-      display: flex;
-      gap: 8px;
-      margin-left: 20px;
-      /* empurra para a direita */;
-    }
-    .lang-btn {
-      background: transparent;
-      border: 1px solid var(--borda);
-      border-radius: 30px;
-      padding: 4px 10px;
-      font-size: 1.2rem;
-      line-height: 1.4;
-      transition: background 0.3s, border-color 0.3s;
-      cursor: pointer;
-    }
-    .lang-btn:hover {
-      background: var(--verde-claro);
-      border-color: var(--verde-medio);
-    }
-    .lang-btn.active {
-      background: var(--verde-medio);
-      border-color: var(--verde-medio);
-      color: white;
     }
 
     .menu-toggle {
@@ -341,7 +359,7 @@
       font-weight: 500;
     }
 
-    /* ---------- SERVIÇOS ---------- */
+    /* ---------- SERVIÇOS (sem números e sem botões) ---------- */
     .servicos-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -354,42 +372,27 @@
       box-shadow: var(--sombra);
       border: 1px solid var(--borda);
       transition: transform 0.3s, box-shadow 0.3s;
+      text-align: left;
     }
     .servico-card:hover {
       transform: translateY(-6px);
       box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
     }
-    .servico-card .num {
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--verde-medio);
-      letter-spacing: 0.06em;
-    }
     .servico-card h3 {
       font-family: var(--fonte-titulo);
-      font-size: 1.4rem;
+      font-size: 1.5rem;
       font-weight: 600;
-      margin: 12px 0 10px;
+      margin-bottom: 10px;
     }
     .servico-card p {
-      font-size: 0.95rem;
+      font-size: 1.05rem;
       font-weight: 500;
-      opacity: 0.8;
-      margin-bottom: 16px;
-    }
-    .servico-card .btn-link {
-      font-weight: 600;
-      color: var(--verde-medio);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: gap 0.3s;
-    }
-    .servico-card .btn-link:hover {
-      gap: 12px;
+      opacity: 0.85;
+      line-height: 1.5;
+      text-align: left;
     }
 
-    /* ---------- CARROSSEL FLUXO DESLIZANTE (ESTEIRA) ---------- */
+    /* ---------- CARROSSEL FLUÍDO (sem borda verde) ---------- */
     .carousel-full {
       width: 100vw;
       position: relative;
@@ -404,34 +407,40 @@
     .carousel-wrapper {
       position: relative;
       overflow: hidden;
-      border-radius: 24px;
       margin: 0 20px;
-      background: var(--verde-claro);
+      background: transparent;
+      /* sem fundo */;
     }
 
     .carousel-track {
       display: flex;
-      transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       will-change: transform;
     }
 
     .carousel-slide {
       flex: 0 0 25%;
-      /* 4 itens por vez em desktop */
       aspect-ratio: 16 / 8;
-      padding: 4px;
-      /* pequeno espaçamento entre as imagens */
-      background: var(--verde-claro);
+      padding: 6px;
       border-radius: 24px;
       overflow: hidden;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
     }
-
+    .carousel-slide:hover {
+      transform: scale(1.02);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+      z-index: 2;
+    }
     .carousel-slide img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
       border-radius: 20px;
+      transition: filter 0.3s;
+    }
+    .carousel-slide:hover img {
+      filter: brightness(1.05) saturate(1.05);
     }
 
     /* Setas */
@@ -440,7 +449,7 @@
       top: 50%;
       transform: translateY(-50%);
       z-index: 5;
-      background: rgba(255, 255, 255, 0.3);
+      background: rgba(255, 255, 255, 0.35);
       backdrop-filter: blur(4px);
       border: none;
       border-radius: 50%;
@@ -452,13 +461,13 @@
       font-size: 1.6rem;
       color: var(--verde-escuro);
       cursor: pointer;
-      transition: opacity 0.3s, transform 0.2s;
+      transition: opacity 0.3s, transform 0.2s, background 0.3s;
       opacity: 0;
       pointer-events: none;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     }
     .carousel-btn:hover {
-      background: rgba(255, 255, 255, 0.6);
+      background: rgba(255, 255, 255, 0.7);
       transform: translateY(-50%) scale(1.05);
     }
     .carousel-wrapper:hover .carousel-btn {
@@ -491,7 +500,7 @@
       background: var(--verde-medio);
     }
 
-    /* ---------- VIVEIRO DESTAQUE ---------- */
+    /* ---------- VIVEIRO (com imagem decorativa à direita) ---------- */
     .viveiro-destaque {
       background: var(--verde-escuro);
       color: white;
@@ -502,50 +511,94 @@
       justify-content: space-between;
       flex-wrap: wrap;
       gap: 30px;
+      position: relative;
+      overflow: hidden;
     }
-    .viveiro-destaque .viveiro-texto {
-      flex: 1;
+    .viveiro-texto {
+      flex: 1 1 60%;
+      text-align: left;
+      z-index: 2;
     }
-    .viveiro-destaque h2 {
+    .viveiro-texto .eyebrow {
+      color: var(--verde-claro);
+      font-weight: 600;
+      font-size: 0.85rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    .viveiro-texto h2 {
       font-family: var(--fonte-titulo);
       font-size: clamp(2.2rem, 4.5vw, 3.2rem);
       font-weight: 600;
       line-height: 1.5;
       margin-bottom: 12px;
     }
-    .viveiro-destaque p {
+    .viveiro-texto p {
       opacity: 0.85;
-      max-width: 500px;
+      max-width: 600px;
       font-size: 1.15rem;
       font-weight: 500;
       line-height: 1.5;
+      text-align: left;
+    }
+    .viveiro-imagem {
+      flex: 0 0 35%;
+      min-height: 200px;
+      background-size: cover;
+      background-position: center;
+      border-radius: 20px;
+      opacity: 0.5;
+      /* opacidade baixa para destacar o botão */
+      transition: opacity 0.3s;
+      z-index: 1;
+      position: relative;
+    }
+    .viveiro-imagem:hover {
+      opacity: 0.7;
     }
     .viveiro-destaque .btn {
       flex-shrink: 0;
+      margin-top: 10px;
+      display: inline-block;
+      /* garante que o botão fique sobre a imagem */;
     }
 
-    /* ---------- CONTATO ---------- */
+    /* ---------- CONTATO (com foto do lado) ---------- */
     .contato-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 50px;
-      align-items: start;
+      align-items: stretch;
+    }
+    .contato-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+    .contato-info .eyebrow {
+      font-size: 0.85rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--verde-medio);
+      font-weight: 600;
     }
     .contato-info h2 {
       font-family: var(--fonte-titulo);
       font-size: clamp(2rem, 4vw, 2.6rem);
       font-weight: 600;
-      margin: 12px 0 16px;
+      margin: 12px 0 8px;
     }
     .contato-info p {
       margin-bottom: 24px;
       opacity: 0.8;
       font-weight: 500;
+      font-size: 1.05rem;
     }
     .contato-detalhe {
       display: flex;
       flex-direction: column;
       gap: 16px;
+      margin-bottom: 24px;
     }
     .contato-detalhe .item {
       display: flex;
@@ -570,7 +623,6 @@
     .redes-sociais {
       display: flex;
       gap: 18px;
-      margin-top: 24px;
       flex-wrap: wrap;
     }
     .redes-sociais a {
@@ -590,6 +642,28 @@
       background: var(--verde-medio);
       color: white;
       transform: scale(1.08);
+    }
+
+    /* Bloco da foto no contato */
+    .contato-foto {
+      border-radius: 24px;
+      overflow: hidden;
+      min-height: 280px;
+      background-size: cover;
+      background-position: center;
+      background-color: var(--verde-claro);
+      /* fallback */;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 500;
+      font-size: 1.2rem;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      transition: transform 0.4s;
+    }
+    .contato-foto:hover {
+      transform: scale(1.01);
     }
 
     /* ---------- FOOTER ---------- */
@@ -682,7 +756,10 @@
     @media (max-width: 1024px) {
       .carousel-slide {
         flex: 0 0 33.333%;
-        /* 3 itens */
+      }
+      .viveiro-imagem {
+        flex: 0 0 50%;
+        min-height: 150px;
       }
     }
 
@@ -706,27 +783,32 @@
       nav.open {
         display: flex;
       }
+      .lang-group {
+        margin-left: 0;
+        margin-top: 10px;
+        justify-content: flex-start;
+      }
       .menu-toggle {
         display: flex;
       }
-      .lang-group {
-        margin-left: 0;
-        gap: 6px;
-      }
       .contato-grid {
         grid-template-columns: 1fr;
-        gap: 40px;
+        gap: 30px;
       }
       .viveiro-destaque {
         flex-direction: column;
         text-align: center;
         padding: 40px 24px;
       }
-      .viveiro-destaque .viveiro-texto {
+      .viveiro-texto,
+      .viveiro-texto p {
         text-align: center;
       }
-      .viveiro-destaque p {
-        max-width: 100%;
+      .viveiro-imagem {
+        flex: 0 0 200px;
+        width: 100%;
+        min-height: 150px;
+        opacity: 0.6;
       }
       .hero-content h1 {
         font-size: 2.6rem;
@@ -740,7 +822,7 @@
       }
       .carousel-slide {
         flex: 0 0 50%;
-        /* 2 itens */
+        padding: 4px;
       }
       .carousel-btn {
         width: 40px;
@@ -759,19 +841,27 @@
       .servicos-grid {
         grid-template-columns: 1fr;
       }
-      .header-inner {
-        flex-wrap: wrap;
-      }
       .carousel-slide {
         flex: 0 0 100%;
-        /* 1 item */
+        padding: 4px;
       }
       .carousel-wrapper {
         margin: 0 4px;
-        border-radius: 16px;
       }
-      .carousel-slide {
-        border-radius: 16px;
+      .viveiro-imagem {
+        min-height: 120px;
+      }
+      .btn-destaque {
+        padding: 14px 30px;
+        font-size: 1rem;
+      }
+      .lang-btn {
+        padding: 2px 10px;
+        font-size: 0.8rem;
+        min-width: 40px;
+      }
+      .lang-btn .code {
+        font-size: 0.65rem;
       }
     }
   </style>
@@ -782,7 +872,7 @@
   <header>
     <div class="container header-inner">
       <a href="#" class="logo">
-        <!-- Substitua o src pela sua logo -->
+        <!-- Substitua pelo caminho da sua logo -->
         <img src="https://via.placeholder.com/80x80/4a7c59/ffffff?text=Logo" alt="Logo" />
         Juliana Favarato
       </a>
@@ -793,11 +883,17 @@
         <a href="#viveiro" data-i18n="nav_viveiro">Viveiro</a>
         <a href="#contato" data-i18n="nav_contato">Contato</a>
 
-        <!-- Botões de idioma com bandeira apenas -->
+        <!-- Botões de idioma com bandeira + código centralizado -->
         <div class="lang-group">
-          <button class="lang-btn active" data-lang="pt" aria-label="Português">🇧🇷</button>
-          <button class="lang-btn" data-lang="en" aria-label="English">🇺🇸</button>
-          <button class="lang-btn" data-lang="es" aria-label="Español">🇪🇸</button>
+          <button class="lang-btn active" data-lang="pt">
+            <span class="flag">🇧🇷</span><span class="code">PT</span>
+          </button>
+          <button class="lang-btn" data-lang="en">
+            <span class="flag">🇺🇸</span><span class="code">EN</span>
+          </button>
+          <button class="lang-btn" data-lang="es">
+            <span class="flag">🇪🇸</span><span class="code">ES</span>
+          </button>
         </div>
       </nav>
 
@@ -826,7 +922,7 @@
     </div>
   </section>
 
-  <!-- SERVIÇOS -->
+  <!-- SERVIÇOS (sem números, sem "saiba mais") -->
   <section id="servicos">
     <div class="container">
       <div class="section-head reveal">
@@ -839,34 +935,26 @@
 
       <div class="servicos-grid reveal">
         <div class="servico-card">
-          <span class="num">01</span>
           <h3 data-i18n="servico1_tit">Paisagismo residencial</h3>
           <p data-i18n="servico1_desc">Jardins, varandas e quintais que refletem sua personalidade.</p>
-          <a href="#" class="btn-link" data-i18n="servico1_btn">Saiba mais →</a>
         </div>
         <div class="servico-card">
-          <span class="num">02</span>
           <h3 data-i18n="servico2_tit">Paisagismo comercial</h3>
           <p data-i18n="servico2_desc">Áreas verdes para escritórios, lojas e condomínios.</p>
-          <a href="#" class="btn-link" data-i18n="servico2_btn">Saiba mais →</a>
         </div>
         <div class="servico-card">
-          <span class="num">03</span>
           <h3 data-i18n="servico3_tit">Viveiro próprio</h3>
           <p data-i18n="servico3_desc">Mais de 200 espécies nativas cultivadas com responsabilidade.</p>
-          <a href="#viveiro" class="btn-link" data-i18n="servico3_btn">Conheça →</a>
         </div>
         <div class="servico-card">
-          <span class="num">04</span>
           <h3 data-i18n="servico4_tit">Consultoria &amp; manutenção</h3>
           <p data-i18n="servico4_desc">Acompanhamento técnico para seu jardim florescer.</p>
-          <a href="#" class="btn-link" data-i18n="servico4_btn">Saiba mais →</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PROJETOS (CARROSSEL ESTEIRA) -->
+  <!-- PROJETOS (CARROSSEL FLUÍDO, 6s, sem borda) -->
   <section id="projetos" style="padding: 60px 0 80px;">
     <div class="container">
       <div class="section-head reveal">
@@ -896,28 +984,31 @@
     </div>
   </section>
 
-  <!-- VIVEIRO DESTAQUE -->
+  <!-- VIVEIRO (com imagem decorativa à direita) -->
   <section id="viveiro">
     <div class="container">
       <div class="viveiro-destaque reveal">
         <div class="viveiro-texto">
-          <div class="eyebrow" style="color: var(--verde-claro); font-weight: 600;" data-i18n="viveiro_eyebrow">Viveiro</div>
+          <div class="eyebrow" data-i18n="viveiro_eyebrow">Viveiro</div>
           <h2 data-i18n="viveiro_titulo">Mais de 200 espécies<br />à sua disposição</h2>
           <p data-i18n="viveiro_desc">Plantas nativas e ornamentais cultivadas com cuidado. Venha conhecer nosso viveiro ou faça seu pedido online.</p>
+          <a href="https://www.instagram.com/viveirolicuri/" target="_blank" rel="noopener" class="btn btn-destaque" data-i18n="viveiro_btn">Conheça o Viveiro Licuri</a>
         </div>
-        <a href="https://www.instagram.com/viveirolicuri/" target="_blank" rel="noopener" class="btn btn-destaque" data-i18n="viveiro_btn">Visitar viveiro</a>
+        <div class="viveiro-imagem" id="viveiroImagem" style="background-image: url('https://via.placeholder.com/600x400/4a7c59/ffffff?text=Sua+Imagem');">
+          <!-- Placeholder: substitua a URL pela sua imagem -->
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- CONTATO -->
+  <!-- CONTATO (com foto do lado) -->
   <section id="contato">
     <div class="container">
       <div class="contato-grid">
         <div class="contato-info reveal">
-          <div class="eyebrow" style="font-size:0.85rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--verde-medio);font-weight:600;" data-i18n="contato_eyebrow">Contato</div>
+          <div class="eyebrow" data-i18n="contato_eyebrow">Contato</div>
           <h2 data-i18n="contato_titulo">Vamos plantar juntos?</h2>
-          <p data-i18n="contato_desc">Entre em contato por um dos canais abaixo. Respondo em até 24 horas.</p>
+          <p data-i18n="contato_desc">Entre em contato por um dos canais abaixo.</p>
 
           <div class="contato-detalhe">
             <div class="item">
@@ -947,11 +1038,9 @@
           </div>
         </div>
 
-        <div class="reveal" style="display:flex;align-items:center;justify-content:center;background:var(--verde-claro);border-radius:24px;min-height:200px;padding:30px;color:var(--verde-escuro);text-align:center;">
-          <div>
-            <i class="fas fa-seedling" style="font-size:4rem;opacity:0.6;"></i>
-            <p style="font-size:1.2rem;margin-top:12px;font-weight:500;" data-i18n="contato_frase">Pronto para transformar seu espaço?</p>
-          </div>
+        <!-- Bloco da foto (substitua o background-image) -->
+        <div class="contato-foto reveal" id="contatoFoto" style="background-image: url('https://via.placeholder.com/600x600/4a7c59/ffffff?text=Sua+Imagem');">
+          <!-- Placeholder: substitua a URL pela sua imagem -->
         </div>
       </div>
     </div>
@@ -1018,7 +1107,7 @@
     }, { threshold: 0.15 });
     reveals.forEach(el => observer.observe(el));
 
-    // ---------- CARROSSEL ESTEIRA (4 itens por vez) ----------
+    // ---------- CARROSSEL ESTEIRA (4 itens, 6s) ----------
     const track = document.getElementById('carouselTrack');
     const dotsContainer = document.getElementById('carouselDots');
     const prevBtn = document.getElementById('prevBtn');
@@ -1053,10 +1142,8 @@
 
     function buildCarousel() {
       itemsPerView = getItemsPerView();
-      // Duplicamos as imagens para criar efeito infinito (opcional)
-      // Para simplificar, apenas criamos os slides com base no array original.
-      // Para esteira contínua, clonamos as imagens para ter um loop suave.
-      const duplicated = [...imagens, ...imagens, ...imagens]; // 3x para transição infinita
+      // Duplica para loop infinito
+      const duplicated = [...imagens, ...imagens, ...imagens];
       totalSlides = duplicated.length;
 
       track.innerHTML = '';
@@ -1070,7 +1157,6 @@
         track.appendChild(slide);
       });
 
-      // Dots (baseado no número original de imagens)
       dotsContainer.innerHTML = '';
       for (let i = 0; i < imagens.length; i++) {
         const dot = document.createElement('button');
@@ -1082,18 +1168,16 @@
         dotsContainer.appendChild(dot);
       }
 
-      // Posiciona no início
-      currentIndex = 0;
+      currentIndex = imagens.length; // começa no bloco do meio
       updateCarousel(false);
     }
 
     function updateCarousel(animate = true) {
       const slideWidth = 100 / itemsPerView;
       const offset = currentIndex * slideWidth;
-      track.style.transition = animate ? 'transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)' : 'none';
+      track.style.transition = animate ? 'transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)' : 'none';
       track.style.transform = `translateX(-${offset}%)`;
 
-      // Atualiza dots (baseado no índice original, modulado)
       const originalIndex = currentIndex % imagens.length;
       document.querySelectorAll('.carousel-dot').forEach((dot, i) => {
         dot.classList.toggle('active', i === originalIndex);
@@ -1101,9 +1185,7 @@
     }
 
     function goToSlide(index) {
-      // index é o índice original (0 até imagens.length-1)
-      // Precisamos mapear para o índice real no track (que tem 3x imagens)
-      const realIndex = index + imagens.length; // sempre no bloco do meio
+      const realIndex = index + imagens.length;
       currentIndex = realIndex;
       updateCarousel(true);
       resetAuto();
@@ -1112,12 +1194,11 @@
     function nextSlide() {
       currentIndex++;
       updateCarousel(true);
-      // Se chegou ao final do bloco do meio, volta suavemente para o início
       if (currentIndex >= imagens.length * 2) {
         setTimeout(() => {
           currentIndex = imagens.length;
           updateCarousel(false);
-        }, 600);
+        }, 800);
       }
       resetAuto();
     }
@@ -1129,21 +1210,19 @@
         setTimeout(() => {
           currentIndex = imagens.length * 2 - 1;
           updateCarousel(false);
-        }, 600);
+        }, 800);
       }
       resetAuto();
     }
 
     function resetAuto() {
       clearInterval(autoInterval);
-      autoInterval = setInterval(nextSlide, 4000);
+      autoInterval = setInterval(nextSlide, 6000);
     }
 
-    // Inicializa
     buildCarousel();
     resetAuto();
 
-    // Eventos das setas
     prevBtn.addEventListener('click', (e) => {
       e.stopPropagation();
       prevSlide();
@@ -1153,11 +1232,9 @@
       nextSlide();
     });
 
-    // Pausa no hover
     wrapper.addEventListener('mouseenter', () => clearInterval(autoInterval));
     wrapper.addEventListener('mouseleave', resetAuto);
 
-    // Reconstruir ao redimensionar (ajusta itemsPerView)
     let resizeTimeout;
     window.addEventListener('resize', () => {
       clearTimeout(resizeTimeout);
@@ -1196,26 +1273,21 @@
         servicos_desc: 'Soluções integradas para seu jardim nascer forte.',
         servico1_tit: 'Paisagismo residencial',
         servico1_desc: 'Jardins, varandas e quintais que refletem sua personalidade.',
-        servico1_btn: 'Saiba mais →',
         servico2_tit: 'Paisagismo comercial',
         servico2_desc: 'Áreas verdes para escritórios, lojas e condomínios.',
-        servico2_btn: 'Saiba mais →',
         servico3_tit: 'Viveiro próprio',
         servico3_desc: 'Mais de 200 espécies nativas cultivadas com responsabilidade.',
-        servico3_btn: 'Conheça →',
         servico4_tit: 'Consultoria & manutenção',
         servico4_desc: 'Acompanhamento técnico para seu jardim florescer.',
-        servico4_btn: 'Saiba mais →',
         projetos_eyebrow: 'Projetos',
         projetos_titulo: 'Alguns dos meus trabalhos',
         viveiro_eyebrow: 'Viveiro',
         viveiro_titulo: 'Mais de 200 espécies<br />à sua disposição',
         viveiro_desc: 'Plantas nativas e ornamentais cultivadas com cuidado. Venha conhecer nosso viveiro ou faça seu pedido online.',
-        viveiro_btn: 'Visitar viveiro',
+        viveiro_btn: 'Conheça o Viveiro Licuri',
         contato_eyebrow: 'Contato',
         contato_titulo: 'Vamos plantar juntos?',
-        contato_desc: 'Entre em contato por um dos canais abaixo. Respondo em até 24 horas.',
-        contato_frase: 'Pronto para transformar seu espaço?',
+        contato_desc: 'Entre em contato por um dos canais abaixo.',
         footer_sub: 'Paisagismo que transforma',
         footer_nav: 'Navegação',
         footer_contato: 'Contato',
@@ -1238,26 +1310,21 @@
         servicos_desc: 'Integrated solutions for your garden to thrive.',
         servico1_tit: 'Residential landscaping',
         servico1_desc: 'Gardens, balconies and backyards that reflect your personality.',
-        servico1_btn: 'Learn more →',
         servico2_tit: 'Commercial landscaping',
         servico2_desc: 'Green areas for offices, stores and condominiums.',
-        servico2_btn: 'Learn more →',
         servico3_tit: 'Own nursery',
         servico3_desc: 'Over 200 native species grown responsibly.',
-        servico3_btn: 'Learn more →',
         servico4_tit: 'Consulting & maintenance',
         servico4_desc: 'Technical follow-up for your garden to flourish.',
-        servico4_btn: 'Learn more →',
         projetos_eyebrow: 'Projects',
         projetos_titulo: 'Some of my work',
         viveiro_eyebrow: 'Nursery',
         viveiro_titulo: 'Over 200 species<br />at your disposal',
         viveiro_desc: 'Native and ornamental plants grown with care. Come visit our nursery or order online.',
-        viveiro_btn: 'Visit nursery',
+        viveiro_btn: 'Visit Viveiro Licuri',
         contato_eyebrow: 'Contact',
         contato_titulo: "Let's plant together?",
-        contato_desc: 'Get in touch through one of the channels below. I reply within 24 hours.',
-        contato_frase: 'Ready to transform your space?',
+        contato_desc: 'Get in touch through one of the channels below.',
         footer_sub: 'Landscaping that transforms',
         footer_nav: 'Navigation',
         footer_contato: 'Contact',
@@ -1280,26 +1347,21 @@
         servicos_desc: 'Soluciones integradas para que tu jardín crezca fuerte.',
         servico1_tit: 'Paisajismo residencial',
         servico1_desc: 'Jardines, terrazas y patios que reflejan tu personalidad.',
-        servico1_btn: 'Saber más →',
         servico2_tit: 'Paisajismo comercial',
         servico2_desc: 'Áreas verdes para oficinas, tiendas y condominios.',
-        servico2_btn: 'Saber más →',
         servico3_tit: 'Vivero propio',
         servico3_desc: 'Más de 200 especies nativas cultivadas con responsabilidad.',
-        servico3_btn: 'Conocer →',
         servico4_tit: 'Consultoría y mantenimiento',
         servico4_desc: 'Seguimiento técnico para que tu jardín florezca.',
-        servico4_btn: 'Saber más →',
         projetos_eyebrow: 'Proyectos',
         projetos_titulo: 'Algunos de mis trabajos',
         viveiro_eyebrow: 'Vivero',
         viveiro_titulo: 'Más de 200 especies<br />a tu disposición',
         viveiro_desc: 'Plantas nativas y ornamentales cultivadas con cuidado. Visita nuestro vivero o haz tu pedido online.',
-        viveiro_btn: 'Visitar vivero',
+        viveiro_btn: 'Visitar Vivero Licuri',
         contato_eyebrow: 'Contacto',
         contato_titulo: '¿Plantamos juntos?',
-        contato_desc: 'Ponte en contacto a través de uno de los canales. Respondo en 24 horas.',
-        contato_frase: '¿Listo para transformar tu espacio?',
+        contato_desc: 'Ponte en contacto a través de uno de los canales.',
         footer_sub: 'Paisajismo que transforma',
         footer_nav: 'Navegación',
         footer_contato: 'Contacto',
@@ -1340,5 +1402,6 @@
     const idiomaSalvo = localStorage.getItem('idioma') || 'pt';
     aplicarIdioma(idiomaSalvo);
   </script>
+
 </body>
 </html>

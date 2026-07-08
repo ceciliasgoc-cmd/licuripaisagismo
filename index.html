@@ -5,10 +5,47 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Juliana Favarato Paisagismo</title>
 
+  <!-- ============================================================
+  TUTORIAL COMPLETO PARA PERSONALIZAÇÃO
+  =============================================================
+  1. VÍDEO DE FUNDO:
+     - Localize a tag <video> dentro da seção .hero.
+     - Substitua o atributo src do <source> pelo caminho do seu vídeo .mp4.
+     - Exemplo: <source src="videos/meu-fundo.mp4" type="video/mp4">
+     - Dica: mantenha o vídeo em loop, sem áudio e com playsinline.
+
+  2. LOGO:
+     - No <header>, encontre a tag <img> dentro do .logo.
+     - Substitua src="https://via.placeholder.com/..." pelo caminho da sua logo.
+     - Exemplo: <img src="imagens/logo.png" alt="Logo" />
+
+  3. IMAGENS DO CARROSSEL:
+     - No JavaScript, localize o array imagensProjetos.
+     - Substitua as URLs pelas suas próprias imagens (coloque os caminhos ou URLs).
+     - Você pode adicionar ou remover quantas quiser – o carrossel se adapta.
+     - As imagens devem ter proporção 16:8 para melhor exibição.
+
+  4. CORES:
+     - As cores estão definidas nas variáveis :root no CSS.
+     - Você pode alterar os valores para outros tons de verde.
+
+  5. TEXTOS:
+     - Todos os textos estão no objeto 'traducoes' no JavaScript.
+     - Você pode editar qualquer frase para cada idioma (PT, EN, ES).
+
+  6. CONTATOS:
+     - WhatsApp: edite o número no link wa.me/5573999876050.
+     - E-mail: altere o endereço em mailto: e nos links.
+     - Instagram: link principal e do viveiro estão configurados.
+
+  7. ÍCONES:
+     - Usamos Font Awesome 6.5.0 (CDN). Para mais ícones, consulte fontawesome.com.
+  ============================================================ -->
+
   <!-- Fontes -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet" />
 
   <!-- Font Awesome (ícones) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
@@ -43,6 +80,7 @@
       background: var(--off-white);
       color: var(--texto);
       font-family: var(--fonte-corpo);
+      font-weight: 500; /* mais peso no corpo */
       line-height: 1.6;
       overflow-x: hidden;
     }
@@ -122,7 +160,7 @@
     }
     nav a {
       font-size: 1rem;
-      font-weight: 500;
+      font-weight: 600; /* mais peso */
       color: var(--verde-escuro);
       transition: color 0.3s;
       position: relative;
@@ -133,7 +171,7 @@
       left: 0;
       bottom: -2px;
       width: 0;
-      height: 2px;
+      height: 1px; /* linha fina */
       background: var(--verde-medio);
       transition: width 0.3s;
     }
@@ -144,59 +182,33 @@
       width: 100%;
     }
 
-    /* Seletor de idioma */
-    .lang-selector {
-      position: relative;
-      display: inline-block;
+    /* Botões de idioma lado a lado */
+    .lang-group {
+      display: flex;
+      gap: 6px;
+      align-items: center;
     }
     .lang-btn {
-      background: var(--verde-claro);
-      padding: 6px 14px;
+      background: transparent;
+      border: 1px solid var(--borda);
       border-radius: 30px;
-      font-size: 0.9rem;
-      font-weight: 500;
+      padding: 4px 12px;
+      font-size: 0.85rem;
+      font-weight: 600;
       color: var(--verde-escuro);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      border: 1px solid var(--verde-medio);
-      transition: background 0.3s;
+      transition: background 0.3s, color 0.3s, border-color 0.3s;
+      cursor: pointer;
+      font-family: var(--fonte-corpo);
+      line-height: 1.4;
     }
     .lang-btn:hover {
+      background: var(--verde-claro);
+      border-color: var(--verde-medio);
+    }
+    .lang-btn.active {
       background: var(--verde-medio);
       color: white;
-    }
-    .lang-dropdown {
-      display: none;
-      position: absolute;
-      top: 110%;
-      right: 0;
-      background: white;
-      border: 1px solid var(--borda);
-      border-radius: 8px;
-      box-shadow: var(--sombra);
-      min-width: 120px;
-      padding: 6px 0;
-      z-index: 10;
-    }
-    .lang-dropdown button {
-      display: block;
-      width: 100%;
-      text-align: left;
-      padding: 8px 18px;
-      font-size: 0.9rem;
-      color: var(--texto);
-      background: transparent;
-      transition: background 0.2s;
-      border: none;
-      cursor: pointer;
-      font-family: inherit;
-    }
-    .lang-dropdown button:hover {
-      background: var(--verde-claro);
-    }
-    .lang-selector:hover .lang-dropdown {
-      display: block;
+      border-color: var(--verde-medio);
     }
 
     .menu-toggle {
@@ -254,6 +266,7 @@
       display: flex;
       align-items: center;
       gap: 14px;
+      font-weight: 600;
     }
     .hero-content .tag::before {
       content: '';
@@ -274,6 +287,7 @@
     }
     .hero-content p {
       font-size: 1.2rem;
+      font-weight: 500;
       max-width: 500px;
       margin-bottom: 36px;
       opacity: 0.9;
@@ -318,6 +332,8 @@
       background: var(--verde-claro);
       color: var(--verde-escuro);
       border-color: var(--verde-claro);
+      padding: 18px 50px; /* maior */
+      font-size: 1.2rem;
     }
     .btn-destaque:hover {
       background: var(--verde-medio);
@@ -348,18 +364,19 @@
       letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--verde-medio);
-      font-weight: 500;
+      font-weight: 600;
     }
     .section-head h2 {
       font-family: var(--fonte-titulo);
       font-size: clamp(2rem, 4vw, 2.8rem);
-      font-weight: 400;
+      font-weight: 600;
       margin-top: 4px;
     }
     .section-head p {
       color: var(--verde-escuro);
       max-width: 400px;
       opacity: 0.8;
+      font-weight: 500;
     }
 
     /* ---------- SERVIÇOS ---------- */
@@ -389,10 +406,12 @@
     .servico-card h3 {
       font-family: var(--fonte-titulo);
       font-size: 1.4rem;
+      font-weight: 600;
       margin: 12px 0 10px;
     }
     .servico-card p {
       font-size: 0.95rem;
+      font-weight: 500;
       opacity: 0.8;
       margin-bottom: 16px;
     }
@@ -408,11 +427,24 @@
       gap: 12px;
     }
 
-    /* ---------- CARROSSEL 16:8 ---------- */
-    .carousel-wrapper {
-      overflow: hidden;
-      border-radius: 16px;
+    /* ---------- CARROSSEL FULL-WIDTH ---------- */
+    .carousel-full {
+      width: 100vw;
       position: relative;
+      left: 50%;
+      right: 50%;
+      margin-left: -50vw;
+      margin-right: -50vw;
+      padding: 0;
+      overflow: hidden;
+      border-radius: 0; /* sem borda, mas as imagens terão bordas arredondadas */
+    }
+    .carousel-wrapper {
+      position: relative;
+      overflow: hidden;
+      border-radius: 24px;
+      margin: 0 20px; /* pequeno espaçamento lateral para dar destaque */
+      background: var(--verde-claro);
     }
     .carousel-track {
       display: flex;
@@ -422,12 +454,54 @@
       min-width: 100%;
       aspect-ratio: 16 / 8;
       background: var(--verde-claro);
+      border-radius: 24px; /* borda arredondada nas imagens */
+      overflow: hidden;
     }
     .carousel-slide img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      display: block;
     }
+
+    /* Setas minimalistas */
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 5;
+      background: rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(4px);
+      border: none;
+      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      color: var(--verde-escuro);
+      cursor: pointer;
+      transition: opacity 0.3s, transform 0.2s;
+      opacity: 0;
+      pointer-events: none;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .carousel-btn:hover {
+      background: rgba(255, 255, 255, 0.6);
+      transform: translateY(-50%) scale(1.05);
+    }
+    .carousel-wrapper:hover .carousel-btn {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .carousel-btn.prev {
+      left: 16px;
+    }
+    .carousel-btn.next {
+      right: 16px;
+    }
+
     .carousel-controls {
       display: flex;
       justify-content: center;
@@ -452,28 +526,35 @@
       background: var(--verde-escuro);
       color: white;
       border-radius: 24px;
-      padding: 50px 40px;
+      padding: 60px 50px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
       gap: 30px;
     }
+    .viveiro-destaque .viveiro-texto {
+      flex: 1;
+    }
     .viveiro-destaque h2 {
       font-family: var(--fonte-titulo);
-      font-size: clamp(2rem, 4vw, 2.8rem);
-      font-weight: 400;
+      font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+      font-weight: 600;
+      line-height: 1.5; /* espaçamento maior */
+      margin-bottom: 12px;
     }
     .viveiro-destaque p {
       opacity: 0.85;
       max-width: 500px;
-      font-size: 1.05rem;
+      font-size: 1.15rem;
+      font-weight: 500;
+      line-height: 1.5;
     }
     .viveiro-destaque .btn {
       flex-shrink: 0;
     }
 
-    /* ---------- CONTATO (sem formulário) ---------- */
+    /* ---------- CONTATO ---------- */
     .contato-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -483,12 +564,13 @@
     .contato-info h2 {
       font-family: var(--fonte-titulo);
       font-size: clamp(2rem, 4vw, 2.6rem);
-      font-weight: 400;
+      font-weight: 600;
       margin: 12px 0 16px;
     }
     .contato-info p {
       margin-bottom: 24px;
       opacity: 0.8;
+      font-weight: 500;
     }
     .contato-detalhe {
       display: flex;
@@ -508,6 +590,7 @@
     .contato-detalhe .item a,
     .contato-detalhe .item span {
       font-size: 1.05rem;
+      font-weight: 500;
       color: var(--texto);
     }
     .contato-detalhe .item a:hover {
@@ -568,9 +651,11 @@
       letter-spacing: 0.08em;
       color: var(--verde-claro);
       margin-bottom: 4px;
+      font-weight: 600;
     }
     .footer-links a {
       font-size: 0.95rem;
+      font-weight: 500;
       opacity: 0.8;
       transition: opacity 0.3s;
     }
@@ -587,6 +672,7 @@
       opacity: 0.7;
       flex-wrap: wrap;
       gap: 10px;
+      font-weight: 500;
     }
 
     /* ---------- BACK TO TOP ---------- */
@@ -653,6 +739,13 @@
       .viveiro-destaque {
         flex-direction: column;
         text-align: center;
+        padding: 40px 24px;
+      }
+      .viveiro-destaque .viveiro-texto {
+        text-align: center;
+      }
+      .viveiro-destaque p {
+        max-width: 100%;
       }
       .hero-content h1 {
         font-size: 2.6rem;
@@ -660,6 +753,20 @@
       .hero-actions .btn {
         padding: 14px 30px;
         font-size: 1rem;
+      }
+      .carousel-wrapper {
+        margin: 0 8px;
+      }
+      .carousel-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+      }
+      .carousel-btn.prev {
+        left: 8px;
+      }
+      .carousel-btn.next {
+        right: 8px;
       }
     }
 
@@ -669,6 +776,20 @@
       }
       .header-inner {
         flex-wrap: wrap;
+      }
+      .lang-group {
+        gap: 4px;
+      }
+      .lang-btn {
+        padding: 2px 10px;
+        font-size: 0.75rem;
+      }
+      .carousel-wrapper {
+        margin: 0 4px;
+        border-radius: 16px;
+      }
+      .carousel-slide {
+        border-radius: 16px;
       }
     }
   </style>
@@ -690,13 +811,11 @@
         <a href="#viveiro" data-i18n="nav_viveiro">Viveiro</a>
         <a href="#contato" data-i18n="nav_contato">Contato</a>
 
-        <div class="lang-selector">
-          <button class="lang-btn" id="langBtn" aria-label="Idioma">🌐 PT</button>
-          <div class="lang-dropdown">
-            <button data-lang="pt">🇧🇷 Português</button>
-            <button data-lang="en">🇺🇸 English</button>
-            <button data-lang="es">🇪🇸 Español</button>
-          </div>
+        <!-- Botões de idioma lado a lado -->
+        <div class="lang-group">
+          <button class="lang-btn active" data-lang="pt" aria-label="Português">🇧🇷 PT</button>
+          <button class="lang-btn" data-lang="en" aria-label="English">🇺🇸 EN</button>
+          <button class="lang-btn" data-lang="es" aria-label="Español">🇪🇸 ES</button>
         </div>
       </nav>
 
@@ -765,8 +884,8 @@
     </div>
   </section>
 
-  <!-- PROJETOS (CARROSSEL) -->
-  <section id="projetos">
+  <!-- PROJETOS (CARROSSEL FULL-WIDTH) -->
+  <section id="projetos" style="padding: 60px 0 80px;">
     <div class="container">
       <div class="section-head reveal">
         <div>
@@ -775,12 +894,24 @@
         </div>
         <p data-i18n="projetos_desc">Passe o mouse para pausar o carrossel.</p>
       </div>
+    </div>
 
-      <div class="carousel-wrapper reveal">
+    <!-- Carrossel full-width -->
+    <div class="carousel-full">
+      <div class="carousel-wrapper" id="carouselWrapper">
         <div class="carousel-track" id="carouselTrack">
           <!-- Inserido via JS -->
         </div>
+        <button class="carousel-btn prev" id="prevBtn" aria-label="Anterior">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="carousel-btn next" id="nextBtn" aria-label="Próximo">
+          <i class="fas fa-chevron-right"></i>
+        </button>
       </div>
+    </div>
+
+    <div class="container">
       <div class="carousel-controls" id="carouselDots"></div>
     </div>
   </section>
@@ -789,22 +920,22 @@
   <section id="viveiro">
     <div class="container">
       <div class="viveiro-destaque reveal">
-        <div>
-          <div class="eyebrow" style="color: var(--verde-claro);" data-i18n="viveiro_eyebrow">Viveiro</div>
+        <div class="viveiro-texto">
+          <div class="eyebrow" style="color: var(--verde-claro); font-weight: 600;" data-i18n="viveiro_eyebrow">Viveiro</div>
           <h2 data-i18n="viveiro_titulo">Mais de 200 espécies<br />à sua disposição</h2>
           <p data-i18n="viveiro_desc">Plantas nativas e ornamentais cultivadas com cuidado. Venha conhecer nosso viveiro ou faça seu pedido online.</p>
         </div>
-        <a href="#" class="btn btn-destaque" data-i18n="viveiro_btn">Visitar viveiro</a>
+        <a href="https://www.instagram.com/viveirolicuri/" target="_blank" rel="noopener" class="btn btn-destaque" data-i18n="viveiro_btn">Visitar viveiro</a>
       </div>
     </div>
   </section>
 
-  <!-- CONTATO (sem formulário) -->
+  <!-- CONTATO -->
   <section id="contato">
     <div class="container">
       <div class="contato-grid">
         <div class="contato-info reveal">
-          <div class="eyebrow" style="font-size:0.85rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--verde-medio);font-weight:500;" data-i18n="contato_eyebrow">Contato</div>
+          <div class="eyebrow" style="font-size:0.85rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--verde-medio);font-weight:600;" data-i18n="contato_eyebrow">Contato</div>
           <h2 data-i18n="contato_titulo">Vamos plantar juntos?</h2>
           <p data-i18n="contato_desc">Entre em contato por um dos canais abaixo. Respondo em até 24 horas.</p>
 
@@ -819,7 +950,7 @@
             </div>
             <div class="item">
               <i class="fas fa-map-marker-alt"></i>
-              <a href="https://maps.app.goo.gl/fBDhjV9oZNZXXh1W6" target="_blank">Rua das Flores, 123 – São Paulo, SP</a>
+              <a href="https://maps.app.goo.gl/fBDhjV9oZNZXXh1W6" target="_blank">Rua Principal - Trancoso, Porto Seguro - BA</a>
             </div>
           </div>
 
@@ -836,11 +967,10 @@
           </div>
         </div>
 
-        <!-- Espaço vazio ou você pode colocar uma imagem, mas deixei apenas os contatos -->
         <div class="reveal" style="display:flex;align-items:center;justify-content:center;background:var(--verde-claro);border-radius:24px;min-height:200px;padding:30px;color:var(--verde-escuro);text-align:center;">
           <div>
             <i class="fas fa-seedling" style="font-size:4rem;opacity:0.6;"></i>
-            <p style="font-size:1.2rem;margin-top:12px;" data-i18n="contato_frase">Pronto para transformar seu espaço?</p>
+            <p style="font-size:1.2rem;margin-top:12px;font-weight:500;" data-i18n="contato_frase">Pronto para transformar seu espaço?</p>
           </div>
         </div>
       </div>
@@ -856,7 +986,7 @@
             <img src="https://via.placeholder.com/60x60/4a7c59/ffffff?text=Logo" alt="Logo" style="height:40px;width:auto;filter:brightness(1.2);" />
             Juliana Favarato
           </a>
-          <p style="opacity:0.7;margin-top:8px;font-size:0.9rem;" data-i18n="footer_sub">Paisagismo que transforma</p>
+          <p style="opacity:0.7;margin-top:8px;font-size:0.9rem;font-weight:500;" data-i18n="footer_sub">Paisagismo que transforma</p>
         </div>
         <div class="footer-links">
           <div>
@@ -909,17 +1039,20 @@
     }, { threshold: 0.15 });
     reveals.forEach(el => observer.observe(el));
 
-    // ---------- CARROSSEL (16:8) ----------
+    // ---------- CARROSSEL FULL-WIDTH ----------
     const track = document.getElementById('carouselTrack');
     const dotsContainer = document.getElementById('carouselDots');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const carouselWrapper = document.getElementById('carouselWrapper');
 
     // Substitua pelas suas imagens (coloque as URLs ou caminhos)
     const imagensProjetos = [
-      'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=1200&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1598902108854-10e335adac99?q=80&w=1200&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?q=80&w=1200&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1600210492493-0946911123ea?q=80&w=1200&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=1200&auto=format&fit=crop'
+      'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=1400&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1598902108854-10e335adac99?q=80&w=1400&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?q=80&w=1400&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1600210492493-0946911123ea?q=80&w=1400&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=1400&auto=format&fit=crop'
     ];
 
     let slideAtual = 0;
@@ -959,6 +1092,10 @@
       irParaSlide((slideAtual + 1) % imagensProjetos.length);
     }
 
+    function slideAnterior() {
+      irParaSlide((slideAtual - 1 + imagensProjetos.length) % imagensProjetos.length);
+    }
+
     function iniciarAuto() {
       intervalo = setInterval(proximoSlide, 4000);
     }
@@ -970,10 +1107,23 @@
     construirCarrossel();
     iniciarAuto();
 
-    // Pausa ao passar o mouse
-    const wrapper = document.querySelector('.carousel-wrapper');
-    wrapper.addEventListener('mouseenter', pararAuto);
-    wrapper.addEventListener('mouseleave', iniciarAuto);
+    // Eventos das setas
+    prevBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      pararAuto();
+      slideAnterior();
+      iniciarAuto();
+    });
+    nextBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      pararAuto();
+      proximoSlide();
+      iniciarAuto();
+    });
+
+    // Pausa ao passar o mouse (e retoma ao sair)
+    carouselWrapper.addEventListener('mouseenter', pararAuto);
+    carouselWrapper.addEventListener('mouseleave', iniciarAuto);
 
     // ---------- BACK TO TOP ----------
     const backBtn = document.getElementById('backToTop');
@@ -984,7 +1134,7 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    // ---------- IDIOMA (funcional) ----------
+    // ---------- IDIOMA (botões lado a lado) ----------
     const traducoes = {
       pt: {
         nav_servicos: 'Serviços',
@@ -1117,71 +1267,40 @@
       }
     };
 
-    const langBtn = document.getElementById('langBtn');
-    const langDropdown = document.querySelector('.lang-dropdown');
-    const langButtons = langDropdown.querySelectorAll('button');
+    const langButtons = document.querySelectorAll('.lang-btn');
 
     function aplicarIdioma(lang) {
-      // Atualiza o texto do botão
-      const flag = lang === 'pt' ? '🇧🇷' : lang === 'en' ? '🇺🇸' : '🇪🇸';
-      const label = lang === 'pt' ? 'PT' : lang === 'en' ? 'EN' : 'ES';
-      langBtn.innerHTML = `🌐 ${label}`;
+      // Atualiza botões ativos
+      langButtons.forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+      });
 
-      // Percorre todos os elementos com data-i18n
+      // Traduz todos os elementos com data-i18n
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
         if (traducoes[lang] && traducoes[lang][key] !== undefined) {
           if (key === 'hero_title' || key === 'viveiro_titulo') {
-            // Permite HTML interno
             el.innerHTML = traducoes[lang][key];
           } else {
             el.textContent = traducoes[lang][key];
           }
         }
       });
+
+      localStorage.setItem('idioma', lang);
     }
 
+    // Eventos de clique nos botões de idioma
     langButtons.forEach(btn => {
       btn.addEventListener('click', () => {
         const lang = btn.getAttribute('data-lang');
         aplicarIdioma(lang);
-        // Fecha o dropdown
-        langDropdown.style.display = 'none';
-        // Salva a preferência (opcional)
-        localStorage.setItem('idioma', lang);
       });
     });
 
-    // Ao carregar, verifica se há idioma salvo
+    // Carregar idioma salvo
     const idiomaSalvo = localStorage.getItem('idioma') || 'pt';
     aplicarIdioma(idiomaSalvo);
-
-    // Garante que o dropdown reabra ao passar o mouse novamente
-    document.querySelector('.lang-selector').addEventListener('mouseleave', () => {
-      // Não faz nada, o CSS controla o hover
-    });
-
-    // ---------- FECHAR DROPDOWN AO CLICAR FORA ----------
-    document.addEventListener('click', (e) => {
-      const selector = document.querySelector('.lang-selector');
-      if (!selector.contains(e.target)) {
-        langDropdown.style.display = 'none';
-      }
-    });
-    // Reabre no hover (já controlado pelo CSS)
-    // Para evitar que o clique no botão feche, tratamos separadamente
-    langBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      // Alterna a exibição do dropdown (útil para mobile)
-      const current = langDropdown.style.display;
-      langDropdown.style.display = current === 'block' ? 'none' : 'block';
-    });
-    // Fecha ao clicar em um idioma
-    langButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        langDropdown.style.display = 'none';
-      });
-    });
   </script>
 
 </body>

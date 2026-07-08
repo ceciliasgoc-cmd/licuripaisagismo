@@ -80,7 +80,7 @@
       transform: translateY(0);
     }
 
-    /* ---------- HEADER ---------- */
+    /* ---------- HEADER (novo layout) ---------- */
     header {
       position: fixed;
       top: 0;
@@ -97,7 +97,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
       gap: 12px;
     }
 
@@ -109,6 +109,7 @@
       font-size: 1.5rem;
       font-weight: 600;
       color: var(--verde-escuro);
+      flex-shrink: 0;
     }
     .logo img {
       height: 44px;
@@ -119,60 +120,16 @@
       display: flex;
       align-items: center;
       gap: 40px;
-      flex-wrap: wrap;
       flex: 1;
-    }
-    /* Empurra os idiomas para a direita */
-    .lang-group {
-      display: flex;
-      gap: 8px;
-      margin-left: auto;
-      /* vai para a direita */;
-      padding-right: 4px;
-    }
-    .lang-btn {
-      background: transparent;
-      border: 1px solid var(--borda);
-      border-radius: 30px;
-      padding: 4px 14px;
-      font-size: 0.9rem;
-      font-weight: 600;
-      line-height: 1.4;
-      color: var(--verde-escuro);
-      transition: background 0.3s, border-color 0.3s, color 0.3s;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
       justify-content: center;
-      gap: 4px;
-      min-width: 52px;
-      text-align: center;
     }
-    .lang-btn .flag {
-      font-size: 1.1rem;
-      line-height: 1;
-    }
-    .lang-btn .code {
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.03em;
-    }
-    .lang-btn:hover {
-      background: var(--verde-claro);
-      border-color: var(--verde-medio);
-    }
-    .lang-btn.active {
-      background: var(--verde-medio);
-      border-color: var(--verde-medio);
-      color: white;
-    }
-
     nav a {
       font-size: 1rem;
       font-weight: 600;
       color: var(--verde-escuro);
       transition: color 0.3s;
       position: relative;
+      white-space: nowrap;
     }
     nav a::after {
       content: '';
@@ -191,6 +148,50 @@
       width: 100%;
     }
 
+    .lang-group {
+      display: flex;
+      gap: 6px;
+      flex-shrink: 0;
+      margin-left: auto;
+      /* empurra para a direita */;
+    }
+    .lang-btn {
+      background: transparent;
+      border: 1px solid var(--borda);
+      border-radius: 30px;
+      padding: 4px 12px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      line-height: 1.4;
+      color: var(--verde-escuro);
+      transition: background 0.3s, border-color 0.3s, color 0.3s;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      min-width: 44px;
+      text-align: center;
+    }
+    .lang-btn .flag {
+      font-size: 1rem;
+      line-height: 1;
+    }
+    .lang-btn .code {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+    .lang-btn:hover {
+      background: var(--verde-claro);
+      border-color: var(--verde-medio);
+    }
+    .lang-btn.active {
+      background: var(--verde-medio);
+      border-color: var(--verde-medio);
+      color: white;
+    }
+
     .menu-toggle {
       display: none;
       flex-direction: column;
@@ -199,6 +200,7 @@
       background: transparent;
       border: none;
       cursor: pointer;
+      flex-shrink: 0;
     }
     .menu-toggle span {
       height: 2.5px;
@@ -359,7 +361,7 @@
       font-weight: 500;
     }
 
-    /* ---------- SERVIÇOS (sem números e sem botões) ---------- */
+    /* ---------- SERVIÇOS ---------- */
     .servicos-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -392,115 +394,90 @@
       text-align: left;
     }
 
-    /* ---------- CARROSSEL FLUÍDO (sem borda verde) ---------- */
-    .carousel-full {
-      width: 100vw;
-      position: relative;
-      left: 50%;
-      right: 50%;
-      margin-left: -50vw;
-      margin-right: -50vw;
-      padding: 0;
+    /* ---------- CARROSSEL MARQUEE (novo) ---------- */
+    .carousel-marquee-section {
       overflow: hidden;
+      position: relative;
+      padding: 20px 0 40px;
+    }
+    .carousel-marquee-section::before,
+    .carousel-marquee-section::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 60px;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .carousel-marquee-section::before {
+      left: 0;
+      background: linear-gradient(to right, var(--off-white), transparent);
+    }
+    .carousel-marquee-section::after {
+      right: 0;
+      background: linear-gradient(to left, var(--off-white), transparent);
     }
 
-    .carousel-wrapper {
-      position: relative;
-      overflow: hidden;
-      margin: 0 20px;
-      background: transparent;
-      /* sem fundo */;
-    }
-
-    .carousel-track {
+    .marquee-track {
       display: flex;
-      transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      gap: 20px;
+      animation: marqueeScroll 30s linear infinite;
+      width: max-content;
       will-change: transform;
     }
+    .marquee-track:hover {
+      animation-play-state: paused;
+    }
 
-    .carousel-slide {
-      flex: 0 0 25%;
-      aspect-ratio: 16 / 8;
-      padding: 6px;
-      border-radius: 24px;
+    .marquee-card {
+      flex: 0 0 280px;
+      border-radius: 16px;
       overflow: hidden;
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s, box-shadow 0.3s;
+      background: white;
+      aspect-ratio: 9 / 16;
+      /* proporção 9:16 */;
     }
-    .carousel-slide:hover {
-      transform: scale(1.02);
+    .marquee-card:hover {
+      transform: scale(1.04);
       box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
-      z-index: 2;
+      z-index: 3;
     }
-    .carousel-slide img {
+    .marquee-card img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
-      border-radius: 20px;
-      transition: filter 0.3s;
-    }
-    .carousel-slide:hover img {
-      filter: brightness(1.05) saturate(1.05);
     }
 
-    /* Setas */
-    .carousel-btn {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      z-index: 5;
-      background: rgba(255, 255, 255, 0.35);
-      backdrop-filter: blur(4px);
-      border: none;
-      border-radius: 50%;
-      width: 48px;
-      height: 48px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.6rem;
-      color: var(--verde-escuro);
-      cursor: pointer;
-      transition: opacity 0.3s, transform 0.2s, background 0.3s;
-      opacity: 0;
-      pointer-events: none;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    }
-    .carousel-btn:hover {
-      background: rgba(255, 255, 255, 0.7);
-      transform: translateY(-50%) scale(1.05);
-    }
-    .carousel-wrapper:hover .carousel-btn {
-      opacity: 1;
-      pointer-events: auto;
-    }
-    .carousel-btn.prev {
-      left: 16px;
-    }
-    .carousel-btn.next {
-      right: 16px;
+    @keyframes marqueeScroll {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
     }
 
-    .carousel-controls {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      margin-top: 24px;
+    /* Responsivo do carrossel */
+    @media (max-width: 768px) {
+      .marquee-card {
+        flex: 0 0 200px;
+      }
+      .carousel-marquee-section::before,
+      .carousel-marquee-section::after {
+        width: 30px;
+      }
     }
-    .carousel-dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: var(--borda);
-      border: none;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-    .carousel-dot.active {
-      background: var(--verde-medio);
+    @media (max-width: 480px) {
+      .marquee-card {
+        flex: 0 0 150px;
+      }
     }
 
-    /* ---------- VIVEIRO (com imagem decorativa à direita) ---------- */
+    /* ---------- VIVEIRO ---------- */
     .viveiro-destaque {
       background: var(--verde-escuro);
       color: white;
@@ -548,7 +525,6 @@
       background-position: center;
       border-radius: 20px;
       opacity: 0.5;
-      /* opacidade baixa para destacar o botão */
       transition: opacity 0.3s;
       z-index: 1;
       position: relative;
@@ -560,10 +536,9 @@
       flex-shrink: 0;
       margin-top: 10px;
       display: inline-block;
-      /* garante que o botão fique sobre a imagem */;
     }
 
-    /* ---------- CONTATO (com foto do lado) ---------- */
+    /* ---------- CONTATO ---------- */
     .contato-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -644,7 +619,6 @@
       transform: scale(1.08);
     }
 
-    /* Bloco da foto no contato */
     .contato-foto {
       border-radius: 24px;
       overflow: hidden;
@@ -652,7 +626,6 @@
       background-size: cover;
       background-position: center;
       background-color: var(--verde-claro);
-      /* fallback */;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -753,16 +726,6 @@
     }
 
     /* ---------- RESPONSIVO ---------- */
-    @media (max-width: 1024px) {
-      .carousel-slide {
-        flex: 0 0 33.333%;
-      }
-      .viveiro-imagem {
-        flex: 0 0 50%;
-        min-height: 150px;
-      }
-    }
-
     @media (max-width: 820px) {
       nav {
         display: none;
@@ -779,6 +742,8 @@
         gap: 20px;
         border-left: 1px solid var(--borda);
         overflow-y: auto;
+        justify-content: flex-start;
+        align-items: flex-start;
       }
       nav.open {
         display: flex;
@@ -817,23 +782,8 @@
         padding: 14px 30px;
         font-size: 1rem;
       }
-      .carousel-wrapper {
-        margin: 0 8px;
-      }
-      .carousel-slide {
-        flex: 0 0 50%;
-        padding: 4px;
-      }
-      .carousel-btn {
-        width: 40px;
-        height: 40px;
-        font-size: 1.2rem;
-      }
-      .carousel-btn.prev {
-        left: 8px;
-      }
-      .carousel-btn.next {
-        right: 8px;
+      .marquee-card {
+        flex: 0 0 200px;
       }
     }
 
@@ -841,12 +791,8 @@
       .servicos-grid {
         grid-template-columns: 1fr;
       }
-      .carousel-slide {
-        flex: 0 0 100%;
-        padding: 4px;
-      }
-      .carousel-wrapper {
-        margin: 0 4px;
+      .marquee-card {
+        flex: 0 0 150px;
       }
       .viveiro-imagem {
         min-height: 120px;
@@ -857,22 +803,22 @@
       }
       .lang-btn {
         padding: 2px 10px;
-        font-size: 0.8rem;
-        min-width: 40px;
+        font-size: 0.75rem;
+        min-width: 36px;
       }
       .lang-btn .code {
-        font-size: 0.65rem;
+        font-size: 0.6rem;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- HEADER -->
+  <!-- HEADER (com logo à esquerda, links centralizados, idiomas à direita) -->
   <header>
     <div class="container header-inner">
       <a href="#" class="logo">
-        <!-- Substitua pelo caminho da sua logo -->
+        <!-- Substitua pela sua logo -->
         <img src="https://via.placeholder.com/80x80/4a7c59/ffffff?text=Logo" alt="Logo" />
         Juliana Favarato
       </a>
@@ -883,7 +829,7 @@
         <a href="#viveiro" data-i18n="nav_viveiro">Viveiro</a>
         <a href="#contato" data-i18n="nav_contato">Contato</a>
 
-        <!-- Botões de idioma com bandeira + código centralizado -->
+        <!-- Botões de idioma -->
         <div class="lang-group">
           <button class="lang-btn active" data-lang="pt">
             <span class="flag">🇧🇷</span><span class="code">PT</span>
@@ -907,7 +853,7 @@
   <section class="hero" id="topo">
     <video class="hero-video" autoplay muted loop playsinline>
       <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
-      <!-- Substitua o src pelo caminho do seu vídeo .mp4 -->
+      <!-- Substitua pelo seu vídeo .mp4 -->
     </video>
     <div class="hero-overlay"></div>
 
@@ -922,7 +868,7 @@
     </div>
   </section>
 
-  <!-- SERVIÇOS (sem números, sem "saiba mais") -->
+  <!-- SERVIÇOS -->
   <section id="servicos">
     <div class="container">
       <div class="section-head reveal">
@@ -954,8 +900,8 @@
     </div>
   </section>
 
-  <!-- PROJETOS (CARROSSEL FLUÍDO, 6s, sem borda) -->
-  <section id="projetos" style="padding: 60px 0 80px;">
+  <!-- PROJETOS (CARROSSEL MARQUEE) -->
+  <section id="projetos" style="padding: 40px 0 60px;">
     <div class="container">
       <div class="section-head reveal">
         <div>
@@ -965,26 +911,14 @@
       </div>
     </div>
 
-    <div class="carousel-full">
-      <div class="carousel-wrapper" id="carouselWrapper">
-        <div class="carousel-track" id="carouselTrack">
-          <!-- Inserido via JS -->
-        </div>
-        <button class="carousel-btn prev" id="prevBtn" aria-label="Anterior">
-          <i class="fas fa-chevron-left"></i>
-        </button>
-        <button class="carousel-btn next" id="nextBtn" aria-label="Próximo">
-          <i class="fas fa-chevron-right"></i>
-        </button>
+    <div class="carousel-marquee-section">
+      <div class="marquee-track" id="marqueeTrack">
+        <!-- Os cards serão inseridos via JavaScript -->
       </div>
-    </div>
-
-    <div class="container">
-      <div class="carousel-controls" id="carouselDots"></div>
     </div>
   </section>
 
-  <!-- VIVEIRO (com imagem decorativa à direita) -->
+  <!-- VIVEIRO -->
   <section id="viveiro">
     <div class="container">
       <div class="viveiro-destaque reveal">
@@ -995,13 +929,13 @@
           <a href="https://www.instagram.com/viveirolicuri/" target="_blank" rel="noopener" class="btn btn-destaque" data-i18n="viveiro_btn">Conheça o Viveiro Licuri</a>
         </div>
         <div class="viveiro-imagem" id="viveiroImagem" style="background-image: url('https://via.placeholder.com/600x400/4a7c59/ffffff?text=Sua+Imagem');">
-          <!-- Placeholder: substitua a URL pela sua imagem -->
+          <!-- Substitua pela sua imagem -->
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CONTATO (com foto do lado) -->
+  <!-- CONTATO -->
   <section id="contato">
     <div class="container">
       <div class="contato-grid">
@@ -1038,9 +972,8 @@
           </div>
         </div>
 
-        <!-- Bloco da foto (substitua o background-image) -->
         <div class="contato-foto reveal" id="contatoFoto" style="background-image: url('https://via.placeholder.com/600x600/4a7c59/ffffff?text=Sua+Imagem');">
-          <!-- Placeholder: substitua a URL pela sua imagem -->
+          <!-- Substitua pela sua imagem -->
         </div>
       </div>
     </div>
@@ -1107,144 +1040,33 @@
     }, { threshold: 0.15 });
     reveals.forEach(el => observer.observe(el));
 
-    // ---------- CARROSSEL ESTEIRA (4 itens, 6s) ----------
-    const track = document.getElementById('carouselTrack');
-    const dotsContainer = document.getElementById('carouselDots');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    const wrapper = document.getElementById('carouselWrapper');
+    // ---------- CARROSSEL MARQUEE (infinito com duplicação) ----------
+    const track = document.getElementById('marqueeTrack');
 
-    // Substitua pelas suas imagens
-    const imagens = [
-      'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=800&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1598902108854-10e335adac99?q=80&w=800&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?q=80&w=800&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1600210492493-0946911123ea?q=80&w=800&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=800&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?q=80&w=800&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1598928506311-c55ded91a20c?q=80&w=800&auto=format&fit=crop'
+    // Lista de imagens (substitua pelas suas)
+    const imagensMarquee = [
+      'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=400&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1598902108854-10e335adac99?q=80&w=400&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?q=80&w=400&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1600210492493-0946911123ea?q=80&w=400&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=400&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?q=80&w=400&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=400&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1598928506311-c55ded91a20c?q=80&w=400&auto=format&fit=crop'
     ];
 
-    let slides = [];
-    let currentIndex = 0;
-    let itemsPerView = 4;
-    let totalSlides = imagens.length;
-    let autoInterval;
+    // Duplica as imagens para criar o loop infinito
+    const imagensDuplicadas = [...imagensMarquee, ...imagensMarquee, ...imagensMarquee];
 
-    function getItemsPerView() {
-      const width = window.innerWidth;
-      if (width < 500) return 1;
-      if (width < 820) return 2;
-      if (width < 1024) return 3;
-      return 4;
-    }
-
-    function buildCarousel() {
-      itemsPerView = getItemsPerView();
-      // Duplica para loop infinito
-      const duplicated = [...imagens, ...imagens, ...imagens];
-      totalSlides = duplicated.length;
-
-      track.innerHTML = '';
-      duplicated.forEach((src, i) => {
-        const slide = document.createElement('div');
-        slide.className = 'carousel-slide';
-        const img = document.createElement('img');
-        img.src = src;
-        img.alt = `Projeto ${i+1}`;
-        slide.appendChild(img);
-        track.appendChild(slide);
-      });
-
-      dotsContainer.innerHTML = '';
-      for (let i = 0; i < imagens.length; i++) {
-        const dot = document.createElement('button');
-        dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
-        dot.setAttribute('aria-label', `Slide ${i+1}`);
-        dot.addEventListener('click', () => {
-          goToSlide(i);
-        });
-        dotsContainer.appendChild(dot);
-      }
-
-      currentIndex = imagens.length; // começa no bloco do meio
-      updateCarousel(false);
-    }
-
-    function updateCarousel(animate = true) {
-      const slideWidth = 100 / itemsPerView;
-      const offset = currentIndex * slideWidth;
-      track.style.transition = animate ? 'transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)' : 'none';
-      track.style.transform = `translateX(-${offset}%)`;
-
-      const originalIndex = currentIndex % imagens.length;
-      document.querySelectorAll('.carousel-dot').forEach((dot, i) => {
-        dot.classList.toggle('active', i === originalIndex);
-      });
-    }
-
-    function goToSlide(index) {
-      const realIndex = index + imagens.length;
-      currentIndex = realIndex;
-      updateCarousel(true);
-      resetAuto();
-    }
-
-    function nextSlide() {
-      currentIndex++;
-      updateCarousel(true);
-      if (currentIndex >= imagens.length * 2) {
-        setTimeout(() => {
-          currentIndex = imagens.length;
-          updateCarousel(false);
-        }, 800);
-      }
-      resetAuto();
-    }
-
-    function prevSlide() {
-      currentIndex--;
-      updateCarousel(true);
-      if (currentIndex < imagens.length) {
-        setTimeout(() => {
-          currentIndex = imagens.length * 2 - 1;
-          updateCarousel(false);
-        }, 800);
-      }
-      resetAuto();
-    }
-
-    function resetAuto() {
-      clearInterval(autoInterval);
-      autoInterval = setInterval(nextSlide, 6000);
-    }
-
-    buildCarousel();
-    resetAuto();
-
-    prevBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      prevSlide();
-    });
-    nextBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      nextSlide();
-    });
-
-    wrapper.addEventListener('mouseenter', () => clearInterval(autoInterval));
-    wrapper.addEventListener('mouseleave', resetAuto);
-
-    let resizeTimeout;
-    window.addEventListener('resize', () => {
-      clearTimeout(resizeTimeout);
-      resizeTimeout = setTimeout(() => {
-        const newItems = getItemsPerView();
-        if (newItems !== itemsPerView) {
-          buildCarousel();
-          resetAuto();
-        }
-      }, 200);
+    imagensDuplicadas.forEach(src => {
+      const card = document.createElement('div');
+      card.className = 'marquee-card';
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = 'Projeto';
+      img.loading = 'lazy';
+      card.appendChild(img);
+      track.appendChild(card);
     });
 
     // ---------- BACK TO TOP ----------

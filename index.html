@@ -5,53 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Juliana Favarato Paisagismo</title>
 
-  <!-- ============================================================
-  TUTORIAL COMPLETO PARA PERSONALIZAÇÃO
-  =============================================================
-  1. VÍDEO DE FUNDO:
-     - Localize a tag <video> dentro da seção .hero.
-     - Substitua o atributo src do <source> pelo caminho do seu vídeo .mp4.
-     - Exemplo: <source src="videos/meu-fundo.mp4" type="video/mp4">
-     - Dica: mantenha o vídeo em loop, sem áudio e com playsinline.
-
-  2. LOGO:
-     - No <header>, encontre a tag <img> dentro do .logo.
-     - Substitua src="https://via.placeholder.com/..." pelo caminho da sua logo.
-     - Exemplo: <img src="imagens/logo.png" alt="Logo" />
-
-  3. IMAGENS DO CARROSSEL:
-     - No JavaScript, localize o array imagensProjetos.
-     - Substitua as URLs pelas suas próprias imagens (coloque os caminhos ou URLs).
-     - Você pode adicionar ou remover quantas quiser – o carrossel se adapta.
-     - As imagens devem ter proporção 16:8 para melhor exibição.
-
-  4. CORES:
-     - As cores estão definidas nas variáveis :root no CSS.
-     - Você pode alterar os valores para outros tons de verde.
-
-  5. TEXTOS:
-     - Todos os textos estão no objeto 'traducoes' no JavaScript.
-     - Você pode editar qualquer frase para cada idioma (PT, EN, ES).
-
-  6. CONTATOS:
-     - WhatsApp: edite o número no link wa.me/5573999876050.
-     - E-mail: altere o endereço em mailto: e nos links.
-     - Instagram: link principal e do viveiro estão configurados.
-
-  7. ÍCONES:
-     - Usamos Font Awesome 6.5.0 (CDN). Para mais ícones, consulte fontawesome.com.
-  ============================================================ -->
-
   <!-- Fontes -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet" />
 
-  <!-- Font Awesome (ícones) -->
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
   <style>
-    /* ---------- RESET E VARIÁVEIS ---------- */
+    /* ---------- RESET ---------- */
     * {
       margin: 0;
       padding: 0;
@@ -63,12 +26,11 @@
       --verde-medio: #4a7c59;
       --verde-claro: #a3c9a6;
       --off-white: #f5f7f0;
-      --cinza-claro: #e2e6db;
+      --borda: #d0d9c7;
       --texto: #1e2b22;
       --fonte-corpo: 'Inter', sans-serif;
       --fonte-titulo: 'Playfair Display', serif;
       --sombra: 0 8px 30px rgba(0,0,0,0.08);
-      --borda: #d0d9c7;
     }
 
     html {
@@ -80,12 +42,13 @@
       background: var(--off-white);
       color: var(--texto);
       font-family: var(--fonte-corpo);
-      font-weight: 500; /* mais peso no corpo */
+      font-weight: 500;
       line-height: 1.6;
       overflow-x: hidden;
     }
 
-    img, video {
+    img,
+    video {
       max-width: 100%;
       display: block;
     }
@@ -106,7 +69,7 @@
       padding: 0 24px;
     }
 
-    /* ---------- REVELAÇÃO ---------- */
+    /* ---------- REVEAL ---------- */
     .reveal {
       opacity: 0;
       transform: translateY(30px);
@@ -155,12 +118,13 @@
     nav {
       display: flex;
       align-items: center;
-      gap: 28px;
+      gap: 40px;
+      /* mais espaço entre os itens */;
       flex-wrap: wrap;
     }
     nav a {
       font-size: 1rem;
-      font-weight: 600; /* mais peso */
+      font-weight: 600;
       color: var(--verde-escuro);
       transition: color 0.3s;
       position: relative;
@@ -171,7 +135,7 @@
       left: 0;
       bottom: -2px;
       width: 0;
-      height: 1px; /* linha fina */
+      height: 1px;
       background: var(--verde-medio);
       transition: width 0.3s;
     }
@@ -182,24 +146,22 @@
       width: 100%;
     }
 
-    /* Botões de idioma lado a lado */
+    /* Botões de idioma com bandeira apenas */
     .lang-group {
       display: flex;
-      gap: 6px;
-      align-items: center;
+      gap: 8px;
+      margin-left: 20px;
+      /* empurra para a direita */;
     }
     .lang-btn {
       background: transparent;
       border: 1px solid var(--borda);
       border-radius: 30px;
-      padding: 4px 12px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--verde-escuro);
-      transition: background 0.3s, color 0.3s, border-color 0.3s;
-      cursor: pointer;
-      font-family: var(--fonte-corpo);
+      padding: 4px 10px;
+      font-size: 1.2rem;
       line-height: 1.4;
+      transition: background 0.3s, border-color 0.3s;
+      cursor: pointer;
     }
     .lang-btn:hover {
       background: var(--verde-claro);
@@ -207,8 +169,8 @@
     }
     .lang-btn.active {
       background: var(--verde-medio);
-      color: white;
       border-color: var(--verde-medio);
+      color: white;
     }
 
     .menu-toggle {
@@ -332,7 +294,7 @@
       background: var(--verde-claro);
       color: var(--verde-escuro);
       border-color: var(--verde-claro);
-      padding: 18px 50px; /* maior */
+      padding: 18px 50px;
       font-size: 1.2rem;
     }
     .btn-destaque:hover {
@@ -395,7 +357,7 @@
     }
     .servico-card:hover {
       transform: translateY(-6px);
-      box-shadow: 0 16px 40px rgba(0,0,0,0.08);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
     }
     .servico-card .num {
       font-size: 0.9rem;
@@ -427,7 +389,7 @@
       gap: 12px;
     }
 
-    /* ---------- CARROSSEL FULL-WIDTH ---------- */
+    /* ---------- CARROSSEL FLUXO DESLIZANTE (ESTEIRA) ---------- */
     .carousel-full {
       width: 100vw;
       position: relative;
@@ -437,34 +399,42 @@
       margin-right: -50vw;
       padding: 0;
       overflow: hidden;
-      border-radius: 0; /* sem borda, mas as imagens terão bordas arredondadas */
     }
+
     .carousel-wrapper {
       position: relative;
       overflow: hidden;
       border-radius: 24px;
-      margin: 0 20px; /* pequeno espaçamento lateral para dar destaque */
+      margin: 0 20px;
       background: var(--verde-claro);
     }
+
     .carousel-track {
       display: flex;
-      transition: transform 0.7s cubic-bezier(0.22, 0.9, 0.3, 1);
+      transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      will-change: transform;
     }
+
     .carousel-slide {
-      min-width: 100%;
+      flex: 0 0 25%;
+      /* 4 itens por vez em desktop */
       aspect-ratio: 16 / 8;
+      padding: 4px;
+      /* pequeno espaçamento entre as imagens */
       background: var(--verde-claro);
-      border-radius: 24px; /* borda arredondada nas imagens */
+      border-radius: 24px;
       overflow: hidden;
     }
+
     .carousel-slide img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
+      border-radius: 20px;
     }
 
-    /* Setas minimalistas */
+    /* Setas */
     .carousel-btn {
       position: absolute;
       top: 50%;
@@ -485,7 +455,7 @@
       transition: opacity 0.3s, transform 0.2s;
       opacity: 0;
       pointer-events: none;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     }
     .carousel-btn:hover {
       background: rgba(255, 255, 255, 0.6);
@@ -540,7 +510,7 @@
       font-family: var(--fonte-titulo);
       font-size: clamp(2.2rem, 4.5vw, 3.2rem);
       font-weight: 600;
-      line-height: 1.5; /* espaçamento maior */
+      line-height: 1.5;
       margin-bottom: 12px;
     }
     .viveiro-destaque p {
@@ -663,7 +633,7 @@
       opacity: 1;
     }
     .footer-bottom {
-      border-top: 1px solid rgba(255,255,255,0.15);
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
       margin-top: 30px;
       padding-top: 18px;
       display: flex;
@@ -709,6 +679,13 @@
     }
 
     /* ---------- RESPONSIVO ---------- */
+    @media (max-width: 1024px) {
+      .carousel-slide {
+        flex: 0 0 33.333%;
+        /* 3 itens */
+      }
+    }
+
     @media (max-width: 820px) {
       nav {
         display: none;
@@ -721,7 +698,7 @@
         background: white;
         flex-direction: column;
         padding: 80px 30px 30px;
-        box-shadow: -4px 0 30px rgba(0,0,0,0.08);
+        box-shadow: -4px 0 30px rgba(0, 0, 0, 0.08);
         gap: 20px;
         border-left: 1px solid var(--borda);
         overflow-y: auto;
@@ -731,6 +708,10 @@
       }
       .menu-toggle {
         display: flex;
+      }
+      .lang-group {
+        margin-left: 0;
+        gap: 6px;
       }
       .contato-grid {
         grid-template-columns: 1fr;
@@ -757,6 +738,10 @@
       .carousel-wrapper {
         margin: 0 8px;
       }
+      .carousel-slide {
+        flex: 0 0 50%;
+        /* 2 itens */
+      }
       .carousel-btn {
         width: 40px;
         height: 40px;
@@ -777,12 +762,9 @@
       .header-inner {
         flex-wrap: wrap;
       }
-      .lang-group {
-        gap: 4px;
-      }
-      .lang-btn {
-        padding: 2px 10px;
-        font-size: 0.75rem;
+      .carousel-slide {
+        flex: 0 0 100%;
+        /* 1 item */
       }
       .carousel-wrapper {
         margin: 0 4px;
@@ -811,11 +793,11 @@
         <a href="#viveiro" data-i18n="nav_viveiro">Viveiro</a>
         <a href="#contato" data-i18n="nav_contato">Contato</a>
 
-        <!-- Botões de idioma lado a lado -->
+        <!-- Botões de idioma com bandeira apenas -->
         <div class="lang-group">
-          <button class="lang-btn active" data-lang="pt" aria-label="Português">🇧🇷 PT</button>
-          <button class="lang-btn" data-lang="en" aria-label="English">🇺🇸 EN</button>
-          <button class="lang-btn" data-lang="es" aria-label="Español">🇪🇸 ES</button>
+          <button class="lang-btn active" data-lang="pt" aria-label="Português">🇧🇷</button>
+          <button class="lang-btn" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="es" aria-label="Español">🇪🇸</button>
         </div>
       </nav>
 
@@ -849,10 +831,10 @@
     <div class="container">
       <div class="section-head reveal">
         <div>
-          <div class="eyebrow" data-i18n="servicos_eyebrow">O que faço</div>
+          <div class="eyebrow" data-i18n="servicos_eyebrow">Serviços</div>
           <h2 data-i18n="servicos_titulo">Do projeto à manutenção</h2>
+          <p data-i18n="servicos_desc" style="margin-top: 6px;">Soluções integradas para seu jardim nascer forte.</p>
         </div>
-        <p data-i18n="servicos_desc">Soluções integradas para seu jardim nascer forte.</p>
       </div>
 
       <div class="servicos-grid reveal">
@@ -884,7 +866,7 @@
     </div>
   </section>
 
-  <!-- PROJETOS (CARROSSEL FULL-WIDTH) -->
+  <!-- PROJETOS (CARROSSEL ESTEIRA) -->
   <section id="projetos" style="padding: 60px 0 80px;">
     <div class="container">
       <div class="section-head reveal">
@@ -892,11 +874,9 @@
           <div class="eyebrow" data-i18n="projetos_eyebrow">Projetos</div>
           <h2 data-i18n="projetos_titulo">Alguns dos meus trabalhos</h2>
         </div>
-        <p data-i18n="projetos_desc">Passe o mouse para pausar o carrossel.</p>
       </div>
     </div>
 
-    <!-- Carrossel full-width -->
     <div class="carousel-full">
       <div class="carousel-wrapper" id="carouselWrapper">
         <div class="carousel-track" id="carouselTrack">
@@ -1016,7 +996,6 @@
   <!-- BACK TO TOP -->
   <button class="back-to-top" id="backToTop" aria-label="Voltar ao topo">↑</button>
 
-  <!-- SCRIPT -->
   <script>
     // ---------- MENU MOBILE ----------
     const toggleBtn = document.getElementById('menuToggle');
@@ -1039,28 +1018,49 @@
     }, { threshold: 0.15 });
     reveals.forEach(el => observer.observe(el));
 
-    // ---------- CARROSSEL FULL-WIDTH ----------
+    // ---------- CARROSSEL ESTEIRA (4 itens por vez) ----------
     const track = document.getElementById('carouselTrack');
     const dotsContainer = document.getElementById('carouselDots');
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
-    const carouselWrapper = document.getElementById('carouselWrapper');
+    const wrapper = document.getElementById('carouselWrapper');
 
-    // Substitua pelas suas imagens (coloque as URLs ou caminhos)
-    const imagensProjetos = [
-      'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=1400&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1598902108854-10e335adac99?q=80&w=1400&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?q=80&w=1400&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1600210492493-0946911123ea?q=80&w=1400&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=1400&auto=format&fit=crop'
+    // Substitua pelas suas imagens
+    const imagens = [
+      'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=800&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1598902108854-10e335adac99?q=80&w=800&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?q=80&w=800&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1600210492493-0946911123ea?q=80&w=800&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=800&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?q=80&w=800&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1598928506311-c55ded91a20c?q=80&w=800&auto=format&fit=crop'
     ];
 
-    let slideAtual = 0;
-    let intervalo;
+    let slides = [];
+    let currentIndex = 0;
+    let itemsPerView = 4;
+    let totalSlides = imagens.length;
+    let autoInterval;
 
-    function construirCarrossel() {
+    function getItemsPerView() {
+      const width = window.innerWidth;
+      if (width < 500) return 1;
+      if (width < 820) return 2;
+      if (width < 1024) return 3;
+      return 4;
+    }
+
+    function buildCarousel() {
+      itemsPerView = getItemsPerView();
+      // Duplicamos as imagens para criar efeito infinito (opcional)
+      // Para simplificar, apenas criamos os slides com base no array original.
+      // Para esteira contínua, clonamos as imagens para ter um loop suave.
+      const duplicated = [...imagens, ...imagens, ...imagens]; // 3x para transição infinita
+      totalSlides = duplicated.length;
+
       track.innerHTML = '';
-      imagensProjetos.forEach((src, i) => {
+      duplicated.forEach((src, i) => {
         const slide = document.createElement('div');
         slide.className = 'carousel-slide';
         const img = document.createElement('img');
@@ -1070,60 +1070,105 @@
         track.appendChild(slide);
       });
 
+      // Dots (baseado no número original de imagens)
       dotsContainer.innerHTML = '';
-      imagensProjetos.forEach((_, i) => {
+      for (let i = 0; i < imagens.length; i++) {
         const dot = document.createElement('button');
         dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
         dot.setAttribute('aria-label', `Slide ${i+1}`);
-        dot.addEventListener('click', () => irParaSlide(i));
+        dot.addEventListener('click', () => {
+          goToSlide(i);
+        });
         dotsContainer.appendChild(dot);
+      }
+
+      // Posiciona no início
+      currentIndex = 0;
+      updateCarousel(false);
+    }
+
+    function updateCarousel(animate = true) {
+      const slideWidth = 100 / itemsPerView;
+      const offset = currentIndex * slideWidth;
+      track.style.transition = animate ? 'transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)' : 'none';
+      track.style.transform = `translateX(-${offset}%)`;
+
+      // Atualiza dots (baseado no índice original, modulado)
+      const originalIndex = currentIndex % imagens.length;
+      document.querySelectorAll('.carousel-dot').forEach((dot, i) => {
+        dot.classList.toggle('active', i === originalIndex);
       });
     }
 
-    function irParaSlide(index) {
-      slideAtual = index;
-      track.style.transform = `translateX(-${index * 100}%)`;
-      document.querySelectorAll('.carousel-dot').forEach((d, i) => {
-        d.classList.toggle('active', i === index);
-      });
+    function goToSlide(index) {
+      // index é o índice original (0 até imagens.length-1)
+      // Precisamos mapear para o índice real no track (que tem 3x imagens)
+      const realIndex = index + imagens.length; // sempre no bloco do meio
+      currentIndex = realIndex;
+      updateCarousel(true);
+      resetAuto();
     }
 
-    function proximoSlide() {
-      irParaSlide((slideAtual + 1) % imagensProjetos.length);
+    function nextSlide() {
+      currentIndex++;
+      updateCarousel(true);
+      // Se chegou ao final do bloco do meio, volta suavemente para o início
+      if (currentIndex >= imagens.length * 2) {
+        setTimeout(() => {
+          currentIndex = imagens.length;
+          updateCarousel(false);
+        }, 600);
+      }
+      resetAuto();
     }
 
-    function slideAnterior() {
-      irParaSlide((slideAtual - 1 + imagensProjetos.length) % imagensProjetos.length);
+    function prevSlide() {
+      currentIndex--;
+      updateCarousel(true);
+      if (currentIndex < imagens.length) {
+        setTimeout(() => {
+          currentIndex = imagens.length * 2 - 1;
+          updateCarousel(false);
+        }, 600);
+      }
+      resetAuto();
     }
 
-    function iniciarAuto() {
-      intervalo = setInterval(proximoSlide, 4000);
+    function resetAuto() {
+      clearInterval(autoInterval);
+      autoInterval = setInterval(nextSlide, 4000);
     }
 
-    function pararAuto() {
-      clearInterval(intervalo);
-    }
-
-    construirCarrossel();
-    iniciarAuto();
+    // Inicializa
+    buildCarousel();
+    resetAuto();
 
     // Eventos das setas
     prevBtn.addEventListener('click', (e) => {
       e.stopPropagation();
-      pararAuto();
-      slideAnterior();
-      iniciarAuto();
+      prevSlide();
     });
     nextBtn.addEventListener('click', (e) => {
       e.stopPropagation();
-      pararAuto();
-      proximoSlide();
-      iniciarAuto();
+      nextSlide();
     });
 
-    // Pausa ao passar o mouse (e retoma ao sair)
-    carouselWrapper.addEventListener('mouseenter', pararAuto);
-    carouselWrapper.addEventListener('mouseleave', iniciarAuto);
+    // Pausa no hover
+    wrapper.addEventListener('mouseenter', () => clearInterval(autoInterval));
+    wrapper.addEventListener('mouseleave', resetAuto);
+
+    // Reconstruir ao redimensionar (ajusta itemsPerView)
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        const newItems = getItemsPerView();
+        if (newItems !== itemsPerView) {
+          buildCarousel();
+          resetAuto();
+        }
+      }, 200);
+    });
 
     // ---------- BACK TO TOP ----------
     const backBtn = document.getElementById('backToTop');
@@ -1134,7 +1179,7 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    // ---------- IDIOMA (botões lado a lado) ----------
+    // ---------- IDIOMA ----------
     const traducoes = {
       pt: {
         nav_servicos: 'Serviços',
@@ -1146,7 +1191,7 @@
         hero_desc: 'Projetos personalizados que unem natureza, arquitetura e o seu jeito de viver.',
         hero_btn_projetos: 'Ver projetos',
         hero_btn_viveiro: 'Conheça o viveiro',
-        servicos_eyebrow: 'O que faço',
+        servicos_eyebrow: 'Serviços',
         servicos_titulo: 'Do projeto à manutenção',
         servicos_desc: 'Soluções integradas para seu jardim nascer forte.',
         servico1_tit: 'Paisagismo residencial',
@@ -1163,7 +1208,6 @@
         servico4_btn: 'Saiba mais →',
         projetos_eyebrow: 'Projetos',
         projetos_titulo: 'Alguns dos meus trabalhos',
-        projetos_desc: 'Passe o mouse para pausar o carrossel.',
         viveiro_eyebrow: 'Viveiro',
         viveiro_titulo: 'Mais de 200 espécies<br />à sua disposição',
         viveiro_desc: 'Plantas nativas e ornamentais cultivadas com cuidado. Venha conhecer nosso viveiro ou faça seu pedido online.',
@@ -1189,7 +1233,7 @@
         hero_desc: 'Personalized projects that unite nature, architecture and your way of living.',
         hero_btn_projetos: 'View projects',
         hero_btn_viveiro: 'Visit the nursery',
-        servicos_eyebrow: 'What I do',
+        servicos_eyebrow: 'Services',
         servicos_titulo: 'From design to maintenance',
         servicos_desc: 'Integrated solutions for your garden to thrive.',
         servico1_tit: 'Residential landscaping',
@@ -1206,13 +1250,12 @@
         servico4_btn: 'Learn more →',
         projetos_eyebrow: 'Projects',
         projetos_titulo: 'Some of my work',
-        projetos_desc: 'Hover to pause the carousel.',
         viveiro_eyebrow: 'Nursery',
         viveiro_titulo: 'Over 200 species<br />at your disposal',
         viveiro_desc: 'Native and ornamental plants grown with care. Come visit our nursery or order online.',
         viveiro_btn: 'Visit nursery',
         contato_eyebrow: 'Contact',
-        contato_titulo: 'Let\'s plant together?',
+        contato_titulo: "Let's plant together?",
         contato_desc: 'Get in touch through one of the channels below. I reply within 24 hours.',
         contato_frase: 'Ready to transform your space?',
         footer_sub: 'Landscaping that transforms',
@@ -1232,7 +1275,7 @@
         hero_desc: 'Proyectos personalizados que unen naturaleza, arquitectura y tu forma de vivir.',
         hero_btn_projetos: 'Ver proyectos',
         hero_btn_viveiro: 'Conocer el vivero',
-        servicos_eyebrow: 'Lo que hago',
+        servicos_eyebrow: 'Servicios',
         servicos_titulo: 'Del proyecto al mantenimiento',
         servicos_desc: 'Soluciones integradas para que tu jardín crezca fuerte.',
         servico1_tit: 'Paisajismo residencial',
@@ -1249,7 +1292,6 @@
         servico4_btn: 'Saber más →',
         projetos_eyebrow: 'Proyectos',
         projetos_titulo: 'Algunos de mis trabajos',
-        projetos_desc: 'Pasa el mouse para pausar el carrusel.',
         viveiro_eyebrow: 'Vivero',
         viveiro_titulo: 'Más de 200 especies<br />a tu disposición',
         viveiro_desc: 'Plantas nativas y ornamentales cultivadas con cuidado. Visita nuestro vivero o haz tu pedido online.',
@@ -1267,15 +1309,13 @@
       }
     };
 
-    const langButtons = document.querySelectorAll('.lang-btn');
+    const langBtns = document.querySelectorAll('.lang-btn');
 
     function aplicarIdioma(lang) {
-      // Atualiza botões ativos
-      langButtons.forEach(btn => {
+      langBtns.forEach(btn => {
         btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
       });
 
-      // Traduz todos os elementos com data-i18n
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
         if (traducoes[lang] && traducoes[lang][key] !== undefined) {
@@ -1290,18 +1330,15 @@
       localStorage.setItem('idioma', lang);
     }
 
-    // Eventos de clique nos botões de idioma
-    langButtons.forEach(btn => {
+    langBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         const lang = btn.getAttribute('data-lang');
         aplicarIdioma(lang);
       });
     });
 
-    // Carregar idioma salvo
     const idiomaSalvo = localStorage.getItem('idioma') || 'pt';
     aplicarIdioma(idiomaSalvo);
   </script>
-
 </body>
 </html>

@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
   <style>
+    /* (todo o CSS permanece igual ao que você já tem) */
     * {
       margin: 0;
       padding: 0;
@@ -358,7 +359,6 @@
       font-weight: 500;
       margin-top: 4px;
       white-space: nowrap;
-      /* força uma linha */;
     }
 
     /* ---------- SERVIÇOS ---------- */
@@ -476,7 +476,7 @@
       }
     }
 
-    /* ---------- VIVEIRO (botão ao lado do texto) ---------- */
+    /* ---------- VIVEIRO ---------- */
     .viveiro-destaque {
       background: var(--verde-escuro);
       color: white;
@@ -531,7 +531,6 @@
       z-index: 2;
       position: relative;
       align-self: center;
-      /* alinhado verticalmente */;
     }
 
     .viveiro-imagem {
@@ -814,7 +813,6 @@
       }
       .section-head p {
         white-space: normal;
-        /* quebra se necessário no mobile */;
       }
     }
 
@@ -846,7 +844,7 @@
   <header>
     <div class="container header-inner">
       <a href="#" class="logo">
-<img src="imagens/logo.png" alt="Logo" />
+        <img src="imagens/logo.png" alt="Logo" />
         Juliana Favarato
       </a>
 
@@ -872,7 +870,7 @@
   <!-- HERO -->
   <section class="hero" id="topo">
     <video class="hero-video" autoplay muted loop playsinline>
-<source src="videos/fundo.mp4" type="video/mp4">
+      <source src="videos/fundo.mp4" type="video/mp4">
     </video>
     <div class="hero-overlay"></div>
 
@@ -995,7 +993,7 @@
           </div>
         </div>
 
-       <div class="contato-foto reveal" id="contatoFoto" style="background-image: url('imagens/foto-contato.jpg');">
+        <div class="contato-foto reveal" id="contatoFoto" style="background-image: url('imagens/foto-contato.jpg');">
         </div>
       </div>
     </div>
@@ -1007,7 +1005,7 @@
       <div class="footer-inner">
         <div>
           <a href="#" class="logo" style="color:white;display:flex;align-items:center;gap:10px;">
-            <img src="https://via.placeholder.com/60x60/4a7c59/ffffff?text=Logo" alt="Logo" style="height:40px;width:auto;filter:brightness(1.2);" />
+            <img src="imagens/logo.png" alt="Logo" style="height:40px;width:auto;filter:brightness(1.2);" />
             Juliana Favarato
           </a>
         </div>
@@ -1061,34 +1059,35 @@
     }, { threshold: 0.15 });
     reveals.forEach(el => observer.observe(el));
 
-    // ---------- CARROSSEL MARQUEE ----------
+    // ---------- CARROSSEL MARQUEE (CORRIGIDO) ----------
     const track = document.getElementById('marqueeTrack');
 
+    // Array com os nomes das suas imagens (todos os arquivos devem estar na pasta 'imagens/')
     const imagensMarquee = [
-     const imagensMarquee = [
-  'imagens/projeto1.jpg',
-  'imagens/projeto2.jpg',
-  'imagens/projeto3.jpg',
-  'imagens/projeto4.jpg',
-  'imagens/projeto5.jpg',
-  'imagens/projeto6.jpg',
-  'imagens/projeto7.jpg',
-  'imagens/projeto8.jpg',  
-  'imagens/projeto9.jpg',
-  'imagens/projeto10.jpg',
-  'imagens/projeto11.jpg',
-  'imagens/projeto12.jpg',
-  'imagens/projeto13.jpg',
-  'imagens/projeto14.jpg',
-  'imagens/projeto15.jpg',
-  'imagens/projeto16.jpg',
-  'imagens/projeto17.jpg',
-  'imagens/projeto18.jpg',
-  'imagens/projeto19.jpg',
-  'imagens/projeto20.jpg',
-  'imagens/projeto21.jpg',
-];
+      'imagens/projeto1.jpg',
+      'imagens/projeto2.jpg',
+      'imagens/projeto3.jpg',
+      'imagens/projeto4.jpg',
+      'imagens/projeto5.jpg',
+      'imagens/projeto6.jpg',
+      'imagens/projeto7.jpg',
+      'imagens/projeto8.jpg',
+      'imagens/projeto9.jpg',
+      'imagens/projeto10.jpg',
+      'imagens/projeto11.jpg',
+      'imagens/projeto12.jpg',
+      'imagens/projeto13.jpg',
+      'imagens/projeto14.jpg',
+      'imagens/projeto15.jpg',
+      'imagens/projeto16.jpg',
+      'imagens/projeto17.jpg',
+      'imagens/projeto18.jpg',
+      'imagens/projeto19.jpg',
+      'imagens/projeto20.jpg',
+      'imagens/projeto21.jpg'
+    ];
 
+    // Duplica para criar o efeito infinito
     const imagensDuplicadas = [...imagensMarquee, ...imagensMarquee, ...imagensMarquee];
 
     imagensDuplicadas.forEach(src => {

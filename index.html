@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
   <style>
+    /* (todo o CSS permanece igual, com as alterações abaixo) */
     * {
       margin: 0;
       padding: 0;
@@ -483,25 +484,24 @@
       }
     }
 
-    /* ---------- VIVEIRO (botão centralizado) ---------- */
+    /* ---------- VIVEIRO (botão centralizado na imagem) ---------- */
     .viveiro-destaque {
       background: var(--verde-escuro);
       color: white;
       border-radius: 24px;
       padding: 60px 50px;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
       position: relative;
       overflow: hidden;
-      gap: 16px;
+      min-height: 340px;
+      display: flex;
+      align-items: center;
     }
 
     .viveiro-texto {
+      flex: 0 0 50%;
+      max-width: 50%;
       text-align: left;
       z-index: 2;
-      width: 100%;
-      max-width: 55%;
       padding-right: 30px;
     }
     .viveiro-texto .eyebrow {
@@ -527,20 +527,9 @@
       line-height: 1.6;
       text-align: left;
       margin-bottom: 6px;
-      max-width: 100%;
     }
     .viveiro-texto p:last-of-type {
       margin-bottom: 0;
-    }
-
-    /* Botão centralizado horizontalmente */
-    .viveiro-botao {
-      z-index: 2;
-      position: relative;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      margin-top: 20px;
     }
 
     .viveiro-imagem {
@@ -548,7 +537,7 @@
       right: 0;
       top: 0;
       bottom: 0;
-      width: 45%;
+      width: 50%;
       background-size: cover;
       background-position: center;
       opacity: 0.25;
@@ -560,7 +549,26 @@
       opacity: 0.4;
     }
 
-    /* ---------- CONTATO (com círculo verde atrás da foto) ---------- */
+    /* Botão centralizado na metade direita (sobre a imagem) */
+    .viveiro-botao-wrapper {
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 3;
+      pointer-events: none;
+      /* permite clicar no botão */;
+    }
+    .viveiro-botao-wrapper .btn {
+      pointer-events: auto;
+      /* reativa o clique */;
+    }
+
+    /* ---------- CONTATO ---------- */
     .contato-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -645,25 +653,25 @@
       box-shadow: 0 8px 24px var(--verde-sombra);
     }
 
-    /* Foto de contato com círculo verde atrás */
-    .contato-foto-wrapper {
+    .contato-foto {
+      border-radius: 24px;
+      overflow: hidden;
+      min-height: 280px;
+      background-size: cover;
+      background-position: center;
+      background-color: var(--verde-claro);
       display: flex;
       align-items: center;
       justify-content: center;
-      border-radius: 50%;
-      background: var(--verde-claro);
-      width: 100%;
-      max-width: 400px;
-      aspect-ratio: 1/1;
-      margin: 0 auto;
+      color: white;
+      font-weight: 500;
+      font-size: 1.2rem;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      transition: transform 0.4s;
       box-shadow: 0 4px 20px var(--verde-sombra);
-      overflow: hidden;
     }
-    .contato-foto-wrapper img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
+    .contato-foto:hover {
+      transform: scale(1.01);
     }
 
     /* ---------- FOOTER ---------- */
@@ -679,6 +687,34 @@
       flex-wrap: wrap;
       gap: 30px;
     }
+
+    /* Logo do rodapé com círculo verde atrás */
+    .footer-logo-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--fonte-titulo);
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: white;
+    }
+    .footer-logo-wrapper .logo-circle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--verde-medio);
+      flex-shrink: 0;
+    }
+    .footer-logo-wrapper .logo-circle img {
+      width: 36px;
+      height: auto;
+      display: block;
+      filter: brightness(1.2);
+    }
+
     .footer-links {
       display: flex;
       gap: 40px;
@@ -794,8 +830,10 @@
         align-items: center;
         text-align: center;
         padding: 40px 24px;
+        min-height: auto;
       }
       .viveiro-texto {
+        flex: 0 0 100%;
         max-width: 100%;
         padding-right: 0;
         text-align: center;
@@ -803,11 +841,13 @@
       .viveiro-texto p {
         text-align: center;
       }
-      .viveiro-botao {
-        margin-top: 16px;
+      .viveiro-botao-wrapper {
+        position: relative;
+        left: auto;
+        top: auto;
+        bottom: auto;
         width: 100%;
-        display: flex;
-        justify-content: center;
+        margin-top: 20px;
       }
       .viveiro-imagem {
         position: relative;
@@ -816,7 +856,6 @@
         border-radius: 16px;
         opacity: 0.4;
         margin-top: 10px;
-        left: auto;
         right: auto;
       }
       .hero-content h1 {
@@ -838,8 +877,15 @@
       .logo img {
         height: 40px;
       }
-      .contato-foto-wrapper {
-        max-width: 300px;
+      .footer-logo-wrapper {
+        font-size: 1.2rem;
+      }
+      .footer-logo-wrapper .logo-circle {
+        width: 44px;
+        height: 44px;
+      }
+      .footer-logo-wrapper .logo-circle img {
+        width: 30px;
       }
     }
 
@@ -868,8 +914,15 @@
       .logo img {
         height: 34px;
       }
-      .contato-foto-wrapper {
-        max-width: 250px;
+      .footer-logo-wrapper {
+        font-size: 1rem;
+      }
+      .footer-logo-wrapper .logo-circle {
+        width: 38px;
+        height: 38px;
+      }
+      .footer-logo-wrapper .logo-circle img {
+        width: 26px;
       }
     }
   </style>
@@ -971,7 +1024,7 @@
     </div>
   </section>
 
-  <!-- VIVEIRO -->
+  <!-- VIVEIRO (botão centralizado na imagem) -->
   <section id="viveiro">
     <div class="container">
       <div class="viveiro-destaque reveal">
@@ -982,7 +1035,7 @@
           <p data-i18n="viveiro_desc2">Venha conhecer nosso viveiro.</p>
         </div>
 
-        <div class="viveiro-botao">
+        <div class="viveiro-botao-wrapper">
           <a href="https://www.instagram.com/viveirolicuri/" target="_blank" rel="noopener" class="btn btn-destaque" data-i18n="viveiro_btn">Conheça o Viveiro Licuri</a>
         </div>
 
@@ -992,7 +1045,7 @@
     </div>
   </section>
 
-  <!-- CONTATO -->
+  <!-- CONTATO (com novo ícone de localização) -->
   <section id="contato">
     <div class="container">
       <div class="contato-grid">
@@ -1026,30 +1079,27 @@
             <a href="mailto:julianafavaratopaisagismo@gmail.com" aria-label="E-mail">
               <i class="fas fa-envelope"></i>
             </a>
-            <!-- NOVO BOTÃO DE LOCALIZAÇÃO -->
             <a href="https://maps.app.goo.gl/fBDhjV9oZNZXXh1W6" target="_blank" rel="noopener" aria-label="Localização">
               <i class="fas fa-location-dot"></i>
             </a>
           </div>
         </div>
 
-        <!-- Foto de contato com círculo verde atrás -->
-        <div class="contato-foto-wrapper reveal">
-          <img src="imagens/foto-contato.jpg" alt="Juliana Favarato" />
+        <div class="contato-foto reveal" id="contatoFoto" style="background-image: url('imagens/foto-contato.jpg');">
         </div>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
+  <!-- FOOTER (com círculo verde atrás da logo) -->
   <footer>
     <div class="container">
       <div class="footer-inner">
-        <div>
-          <a href="#" class="logo" style="color:white;display:flex;align-items:center;gap:10px;">
-            <img src="imagens/logo.png" alt="Logo" style="height:44px;width:auto;filter:brightness(1.2);" />
-            Juliana Favarato
-          </a>
+        <div class="footer-logo-wrapper">
+          <span class="logo-circle">
+            <img src="imagens/logo.png" alt="Logo" />
+          </span>
+          Juliana Favarato
         </div>
         <div class="footer-links">
           <div>
@@ -1296,5 +1346,6 @@
     const idiomaSalvo = localStorage.getItem('idioma') || 'pt';
     aplicarIdioma(idiomaSalvo);
   </script>
+
 </body>
 </html>

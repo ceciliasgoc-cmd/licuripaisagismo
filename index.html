@@ -107,14 +107,12 @@
       gap: 12px;
       font-family: var(--fonte-titulo);
       font-size: 1.8rem;
-      /* aumentado */
       font-weight: 600;
       color: var(--verde-escuro);
       flex-shrink: 0;
     }
     .logo img {
       height: 52px;
-      /* aumentado */
       width: auto;
       display: block;
     }
@@ -382,7 +380,6 @@
       transform: translateY(-6px);
       box-shadow: 0 12px 36px var(--verde-sombra);
     }
-    /* Intercalar fundo: ímpar = verde claro, par = branco */
     .servico-card:nth-child(odd) {
       background: var(--verde-claro);
     }
@@ -405,7 +402,7 @@
       text-align: left;
     }
 
-    /* ---------- CARROSSEL MARQUEE (mais lento) ---------- */
+    /* ---------- CARROSSEL MARQUEE ---------- */
     .carousel-marquee-section {
       overflow: hidden;
       position: relative;
@@ -434,7 +431,6 @@
       display: flex;
       gap: 20px;
       animation: marqueeScroll 60s linear infinite;
-      /* velocidade reduzida pela metade */
       width: max-content;
       will-change: transform;
     }
@@ -487,29 +483,26 @@
       }
     }
 
-    /* ---------- VIVEIRO (imagem à direita, após o texto) ---------- */
+    /* ---------- VIVEIRO (botão centralizado) ---------- */
     .viveiro-destaque {
       background: var(--verde-escuro);
       color: white;
       border-radius: 24px;
       padding: 60px 50px;
       display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 30px;
+      flex-direction: column;
+      align-items: flex-start;
       position: relative;
       overflow: hidden;
+      gap: 16px;
     }
 
     .viveiro-texto {
-      flex: 1 1 50%;
-      max-width: 50%;
       text-align: left;
       z-index: 2;
+      width: 100%;
+      max-width: 50%;
       padding-right: 30px;
-      /* evita encosto na imagem */;
     }
     .viveiro-texto .eyebrow {
       color: var(--verde-claro);
@@ -537,18 +530,19 @@
       max-width: 100%;
     }
     .viveiro-texto p:last-of-type {
-      margin-bottom: 0;
+      margin-bottom: 20px;
     }
 
     .viveiro-botao {
-      flex: 0 0 auto;
       z-index: 2;
       position: relative;
       align-self: center;
-      margin-top: 10px;
+      /* centralizado horizontalmente */
+      width: 100%;
+      display: flex;
+      justify-content: center;
     }
 
-    /* Imagem ocupa a metade direita, começando após o texto */
     .viveiro-imagem {
       position: absolute;
       right: 0;
@@ -561,8 +555,6 @@
       transition: opacity 0.4s;
       z-index: 1;
       border-radius: 0 24px 24px 0;
-      left: 50%;
-      /* começa após a metade do container */;
     }
     .viveiro-imagem:hover {
       opacity: 0.4;
@@ -814,6 +806,7 @@
       .viveiro-botao {
         align-self: center;
         margin-top: 10px;
+        width: auto;
       }
       .viveiro-imagem {
         position: relative;
@@ -822,7 +815,8 @@
         border-radius: 16px;
         opacity: 0.4;
         margin-top: 10px;
-        left: 0;
+        left: auto;
+        right: auto;
       }
       .hero-content h1 {
         font-size: 2.6rem;
@@ -1028,7 +1022,7 @@
           </div>
         </div>
 
-        <div class="contato-foto reveal" id="contatoFoto" style="background-image: url('imagens/foto-contato.jpg');">
+        <div class="contato-foto reveal" id="contatoFoto" style="background-image: url('imagens/foto-contato.png');">
         </div>
       </div>
     </div>
@@ -1289,5 +1283,6 @@
     const idiomaSalvo = localStorage.getItem('idioma') || 'pt';
     aplicarIdioma(idiomaSalvo);
   </script>
+
 </body>
 </html>

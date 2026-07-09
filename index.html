@@ -361,7 +361,7 @@
       white-space: nowrap;
     }
 
-    /* ---------- SERVIÇOS (cards intercalados) ---------- */
+    /* ---------- SERVIÇOS ---------- */
     .servicos-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -501,7 +501,7 @@
       text-align: left;
       z-index: 2;
       width: 100%;
-      max-width: 50%;
+      max-width: 55%;
       padding-right: 30px;
     }
     .viveiro-texto .eyebrow {
@@ -530,17 +530,17 @@
       max-width: 100%;
     }
     .viveiro-texto p:last-of-type {
-      margin-bottom: 20px;
+      margin-bottom: 0;
     }
 
+    /* Botão centralizado horizontalmente */
     .viveiro-botao {
       z-index: 2;
       position: relative;
-      align-self: center;
-      /* centralizado horizontalmente */
       width: 100%;
       display: flex;
       justify-content: center;
+      margin-top: 20px;
     }
 
     .viveiro-imagem {
@@ -548,7 +548,7 @@
       right: 0;
       top: 0;
       bottom: 0;
-      width: 50%;
+      width: 45%;
       background-size: cover;
       background-position: center;
       opacity: 0.25;
@@ -560,7 +560,7 @@
       opacity: 0.4;
     }
 
-    /* ---------- CONTATO ---------- */
+    /* ---------- CONTATO (com círculo verde atrás da foto) ---------- */
     .contato-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -645,25 +645,25 @@
       box-shadow: 0 8px 24px var(--verde-sombra);
     }
 
-    .contato-foto {
-      border-radius: 24px;
-      overflow: hidden;
-      min-height: 280px;
-      background-size: cover;
-      background-position: center;
-      background-color: var(--verde-claro);
+    /* Foto de contato com círculo verde atrás */
+    .contato-foto-wrapper {
       display: flex;
       align-items: center;
       justify-content: center;
-      color: white;
-      font-weight: 500;
-      font-size: 1.2rem;
-      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-      transition: transform 0.4s;
+      border-radius: 50%;
+      background: var(--verde-claro);
+      width: 100%;
+      max-width: 400px;
+      aspect-ratio: 1/1;
+      margin: 0 auto;
       box-shadow: 0 4px 20px var(--verde-sombra);
+      overflow: hidden;
     }
-    .contato-foto:hover {
-      transform: scale(1.01);
+    .contato-foto-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
     /* ---------- FOOTER ---------- */
@@ -804,9 +804,10 @@
         text-align: center;
       }
       .viveiro-botao {
-        align-self: center;
-        margin-top: 10px;
-        width: auto;
+        margin-top: 16px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
       }
       .viveiro-imagem {
         position: relative;
@@ -837,6 +838,9 @@
       .logo img {
         height: 40px;
       }
+      .contato-foto-wrapper {
+        max-width: 300px;
+      }
     }
 
     @media (max-width: 500px) {
@@ -863,6 +867,9 @@
       }
       .logo img {
         height: 34px;
+      }
+      .contato-foto-wrapper {
+        max-width: 250px;
       }
     }
   </style>
@@ -1019,10 +1026,16 @@
             <a href="mailto:julianafavaratopaisagismo@gmail.com" aria-label="E-mail">
               <i class="fas fa-envelope"></i>
             </a>
+            <!-- NOVO BOTÃO DE LOCALIZAÇÃO -->
+            <a href="https://maps.app.goo.gl/fBDhjV9oZNZXXh1W6" target="_blank" rel="noopener" aria-label="Localização">
+              <i class="fas fa-location-dot"></i>
+            </a>
           </div>
         </div>
 
-        <div class="contato-foto reveal" id="contatoFoto" style="background-image: url('imagens/foto-contato.png');">
+        <!-- Foto de contato com círculo verde atrás -->
+        <div class="contato-foto-wrapper reveal">
+          <img src="imagens/foto-contato.jpg" alt="Juliana Favarato" />
         </div>
       </div>
     </div>
@@ -1283,6 +1296,5 @@
     const idiomaSalvo = localStorage.getItem('idioma') || 'pt';
     aplicarIdioma(idiomaSalvo);
   </script>
-
 </body>
 </html>

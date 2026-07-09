@@ -79,7 +79,7 @@
       transform: translateY(0);
     }
 
-    /* ---------- HEADER (corrigido) ---------- */
+    /* ---------- HEADER ---------- */
     header {
       position: fixed;
       top: 0;
@@ -116,7 +116,6 @@
       width: auto;
     }
 
-    /* Container centralizado */
     .nav-center {
       display: flex;
       align-items: center;
@@ -358,6 +357,8 @@
       opacity: 0.8;
       font-weight: 500;
       margin-top: 4px;
+      white-space: nowrap;
+      /* força uma linha */;
     }
 
     /* ---------- SERVIÇOS ---------- */
@@ -475,26 +476,26 @@
       }
     }
 
-    /* ---------- VIVEIRO (botão alinhado à esquerda do painel) ---------- */
+    /* ---------- VIVEIRO (botão ao lado do texto) ---------- */
     .viveiro-destaque {
       background: var(--verde-escuro);
       color: white;
       border-radius: 24px;
       padding: 60px 50px;
       display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      /* tudo alinhado à esquerda */
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 30px;
       position: relative;
       overflow: hidden;
-      gap: 16px;
     }
 
     .viveiro-texto {
+      flex: 1 1 60%;
       text-align: left;
       z-index: 2;
-      width: 100%;
-      max-width: 700px;
     }
     .viveiro-texto .eyebrow {
       color: var(--verde-claro);
@@ -522,7 +523,15 @@
       max-width: 600px;
     }
     .viveiro-texto p:last-of-type {
-      margin-bottom: 20px;
+      margin-bottom: 0;
+    }
+
+    .viveiro-botao {
+      flex: 0 0 auto;
+      z-index: 2;
+      position: relative;
+      align-self: center;
+      /* alinhado verticalmente */;
     }
 
     .viveiro-imagem {
@@ -540,15 +549,6 @@
     }
     .viveiro-imagem:hover {
       opacity: 0.4;
-    }
-
-    .viveiro-destaque .btn {
-      flex-shrink: 0;
-      z-index: 2;
-      position: relative;
-      align-self: flex-start;
-      /* alinhado à esquerda do painel */
-      margin-top: 4px;
     }
 
     /* ---------- CONTATO ---------- */
@@ -781,13 +781,18 @@
         gap: 30px;
       }
       .viveiro-destaque {
-        padding: 40px 24px;
+        flex-direction: column;
         align-items: center;
         text-align: center;
+        padding: 40px 24px;
       }
       .viveiro-texto,
       .viveiro-texto p {
         text-align: center;
+      }
+      .viveiro-botao {
+        align-self: center;
+        margin-top: 10px;
       }
       .viveiro-imagem {
         position: relative;
@@ -796,9 +801,6 @@
         border-radius: 16px;
         opacity: 0.4;
         margin-top: 10px;
-      }
-      .viveiro-destaque .btn {
-        align-self: center;
       }
       .hero-content h1 {
         font-size: 2.6rem;
@@ -809,6 +811,10 @@
       }
       .marquee-card {
         flex: 0 0 200px;
+      }
+      .section-head p {
+        white-space: normal;
+        /* quebra se necessário no mobile */;
       }
     }
 
@@ -942,7 +948,9 @@
           <p data-i18n="viveiro_desc2">Venha conhecer nosso viveiro.</p>
         </div>
 
-        <a href="https://www.instagram.com/viveirolicuri/" target="_blank" rel="noopener" class="btn btn-destaque" data-i18n="viveiro_btn">Conheça o Viveiro Licuri</a>
+        <div class="viveiro-botao">
+          <a href="https://www.instagram.com/viveirolicuri/" target="_blank" rel="noopener" class="btn btn-destaque" data-i18n="viveiro_btn">Conheça o Viveiro Licuri</a>
+        </div>
 
         <div class="viveiro-imagem" id="viveiroImagem" style="background-image: url('https://via.placeholder.com/600x400/4a7c59/ffffff?text=Sua+Imagem');">
           <!-- Substitua pela sua imagem -->

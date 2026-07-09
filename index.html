@@ -14,7 +14,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
   <style>
-    /* (todo o CSS permanece igual ao que você já tem) */
     * {
       margin: 0;
       padding: 0;
@@ -23,10 +22,10 @@
 
     :root {
       --verde-escuro: #1e3b2e;
-      --verde-medio: #4a7c59;
-      --verde-claro: #a3c9a6;
-      --verde-sombra: rgba(74, 124, 89, 0.15);
-      --off-white: #f5f7f0;
+      --verde-medio: #6a8f6b;
+      --verde-claro: #d4e2bf;
+      --verde-sombra: rgba(106, 143, 107, 0.2);
+      --off-white: #f4f6f0;
       --borda: #d0d9c7;
       --texto: #1e2b22;
       --fonte-corpo: 'Inter', sans-serif;
@@ -87,7 +86,7 @@
       left: 0;
       right: 0;
       z-index: 1000;
-      background: rgba(245, 247, 240, 0.92);
+      background: rgba(244, 246, 240, 0.92);
       backdrop-filter: blur(8px);
       border-bottom: 1px solid var(--borda);
       padding: 14px 0;
@@ -105,16 +104,19 @@
     .logo {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
       font-family: var(--fonte-titulo);
-      font-size: 1.5rem;
+      font-size: 1.8rem;
+      /* aumentado */
       font-weight: 600;
       color: var(--verde-escuro);
       flex-shrink: 0;
     }
     .logo img {
-      height: 44px;
+      height: 52px;
+      /* aumentado */
       width: auto;
+      display: block;
     }
 
     .nav-center {
@@ -361,25 +363,33 @@
       white-space: nowrap;
     }
 
-    /* ---------- SERVIÇOS ---------- */
+    /* ---------- SERVIÇOS (cards intercalados) ---------- */
     .servicos-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 28px;
     }
     .servico-card {
-      background: white;
       padding: 32px 24px;
       border-radius: 16px;
-      box-shadow: 0 4px 20px var(--verde-sombra);
       border: 1px solid var(--borda);
       transition: transform 0.3s, box-shadow 0.3s;
       text-align: left;
+      background: white;
+      box-shadow: 0 4px 20px var(--verde-sombra);
     }
     .servico-card:hover {
       transform: translateY(-6px);
       box-shadow: 0 12px 36px var(--verde-sombra);
     }
+    /* Intercalar fundo: ímpar = verde claro, par = branco */
+    .servico-card:nth-child(odd) {
+      background: var(--verde-claro);
+    }
+    .servico-card:nth-child(even) {
+      background: white;
+    }
+
     .servico-card h3 {
       font-family: var(--fonte-titulo);
       font-size: 1.5rem;
@@ -395,7 +405,7 @@
       text-align: left;
     }
 
-    /* ---------- CARROSSEL MARQUEE ---------- */
+    /* ---------- CARROSSEL MARQUEE (mais lento) ---------- */
     .carousel-marquee-section {
       overflow: hidden;
       position: relative;
@@ -423,7 +433,8 @@
     .marquee-track {
       display: flex;
       gap: 20px;
-      animation: marqueeScroll 30s linear infinite;
+      animation: marqueeScroll 60s linear infinite;
+      /* velocidade reduzida pela metade */
       width: max-content;
       will-change: transform;
     }
@@ -476,7 +487,7 @@
       }
     }
 
-    /* ---------- VIVEIRO ---------- */
+    /* ---------- VIVEIRO (imagem à direita, após o texto) ---------- */
     .viveiro-destaque {
       background: var(--verde-escuro);
       color: white;
@@ -493,9 +504,12 @@
     }
 
     .viveiro-texto {
-      flex: 1 1 60%;
+      flex: 1 1 50%;
+      max-width: 50%;
       text-align: left;
       z-index: 2;
+      padding-right: 30px;
+      /* evita encosto na imagem */;
     }
     .viveiro-texto .eyebrow {
       color: var(--verde-claro);
@@ -520,7 +534,7 @@
       line-height: 1.6;
       text-align: left;
       margin-bottom: 6px;
-      max-width: 600px;
+      max-width: 100%;
     }
     .viveiro-texto p:last-of-type {
       margin-bottom: 0;
@@ -531,8 +545,10 @@
       z-index: 2;
       position: relative;
       align-self: center;
+      margin-top: 10px;
     }
 
+    /* Imagem ocupa a metade direita, começando após o texto */
     .viveiro-imagem {
       position: absolute;
       right: 0;
@@ -545,6 +561,8 @@
       transition: opacity 0.4s;
       z-index: 1;
       border-radius: 0 24px 24px 0;
+      left: 50%;
+      /* começa após a metade do container */;
     }
     .viveiro-imagem:hover {
       opacity: 0.4;
@@ -785,7 +803,11 @@
         text-align: center;
         padding: 40px 24px;
       }
-      .viveiro-texto,
+      .viveiro-texto {
+        max-width: 100%;
+        padding-right: 0;
+        text-align: center;
+      }
       .viveiro-texto p {
         text-align: center;
       }
@@ -800,6 +822,7 @@
         border-radius: 16px;
         opacity: 0.4;
         margin-top: 10px;
+        left: 0;
       }
       .hero-content h1 {
         font-size: 2.6rem;
@@ -813,6 +836,12 @@
       }
       .section-head p {
         white-space: normal;
+      }
+      .logo {
+        font-size: 1.4rem;
+      }
+      .logo img {
+        height: 40px;
       }
     }
 
@@ -834,6 +863,12 @@
       }
       section {
         padding: 60px 0;
+      }
+      .logo {
+        font-size: 1.2rem;
+      }
+      .logo img {
+        height: 34px;
       }
     }
   </style>
@@ -972,7 +1007,7 @@
             </div>
             <div class="item">
               <i class="fas fa-phone"></i>
-              <a href="https://wa.me/5573999876050" target="_blank" rel="noopener">(73) 99987-6050</a>
+              <a href="https://wa.me/5573999106030" target="_blank" rel="noopener">(73) 99910-6030</a>
             </div>
             <div class="item">
               <i class="fas fa-map-marker-alt"></i>
@@ -984,7 +1019,7 @@
             <a href="https://www.instagram.com/julianafavaratopaisagismo/" target="_blank" rel="noopener" aria-label="Instagram">
               <i class="fab fa-instagram"></i>
             </a>
-            <a href="https://wa.me/5573999876050" target="_blank" rel="noopener" aria-label="WhatsApp">
+            <a href="https://wa.me/5573999106030" target="_blank" rel="noopener" aria-label="WhatsApp">
               <i class="fab fa-whatsapp"></i>
             </a>
             <a href="mailto:julianafavaratopaisagismo@gmail.com" aria-label="E-mail">
@@ -993,7 +1028,7 @@
           </div>
         </div>
 
-        <div class="contato-foto reveal" id="contatoFoto" style="background-image: url('imagens/foto-contato.png');">
+        <div class="contato-foto reveal" id="contatoFoto" style="background-image: url('imagens/foto-contato.jpg');">
         </div>
       </div>
     </div>
@@ -1005,7 +1040,7 @@
       <div class="footer-inner">
         <div>
           <a href="#" class="logo" style="color:white;display:flex;align-items:center;gap:10px;">
-            <img src="imagens/logo.png" alt="Logo" style="height:40px;width:auto;filter:brightness(1.2);" />
+            <img src="imagens/logo.png" alt="Logo" style="height:44px;width:auto;filter:brightness(1.2);" />
             Juliana Favarato
           </a>
         </div>
@@ -1019,7 +1054,7 @@
           <div>
             <h5 data-i18n="footer_contato">Contato</h5>
             <a href="mailto:julianafavaratopaisagismo@gmail.com">E-mail</a>
-            <a href="https://wa.me/5573999876050" target="_blank" rel="noopener">WhatsApp</a>
+            <a href="https://wa.me/5573999106030" target="_blank" rel="noopener">WhatsApp</a>
           </div>
           <div>
             <h5 data-i18n="footer_redes">Redes</h5>
@@ -1059,10 +1094,9 @@
     }, { threshold: 0.15 });
     reveals.forEach(el => observer.observe(el));
 
-    // ---------- CARROSSEL MARQUEE (CORRIGIDO) ----------
+    // ---------- CARROSSEL MARQUEE ----------
     const track = document.getElementById('marqueeTrack');
 
-    // Array com os nomes das suas imagens (todos os arquivos devem estar na pasta 'imagens/')
     const imagensMarquee = [
       'imagens/projeto1.jpg',
       'imagens/projeto2.jpg',
@@ -1087,7 +1121,6 @@
       'imagens/projeto21.jpg'
     ];
 
-    // Duplica para criar o efeito infinito
     const imagensDuplicadas = [...imagensMarquee, ...imagensMarquee, ...imagensMarquee];
 
     imagensDuplicadas.forEach(src => {
@@ -1256,6 +1289,5 @@
     const idiomaSalvo = localStorage.getItem('idioma') || 'pt';
     aplicarIdioma(idiomaSalvo);
   </script>
-
 </body>
 </html>
